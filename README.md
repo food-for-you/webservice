@@ -21,9 +21,9 @@
 
 
 ##Iteration I
-1. Data collection (Collecting for menu)
+1. Data collection (Collecting for menu): Done by micheal
 2. Search for open data (Obesity)
-3. Refactorize random recommendation code
+3. Refactorize random recommendation code: Being done by Rugal
 4. Frontend: `TBD`
 
 
