@@ -18,6 +18,7 @@
 8. Continuous Integration: [travis](https://travis-ci.org/)
 9. DB: Mysql/Postgresql
 10. Code review: mandatory
+11. Issue tracker: github issue
 
 
 ##Iteration I
