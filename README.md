@@ -23,6 +23,7 @@
 ##Iteration I
 1. Data collection (Collecting for menu): Done by Michelle
 2. Search for open data (Obesity)
+3. Software design: Being done by Rugal
 3. Refactorize random recommendation code: Being done by Rugal
 4. Frontend: `TBD`
 
