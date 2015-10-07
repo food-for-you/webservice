@@ -2,7 +2,6 @@ package ga.rugal.food.core.entity;
 
 import com.google.gson.annotations.Expose;
 import config.SystemDefaultProperties;
-import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -14,13 +13,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 /**
  *
  * @author Rugal Bernstein
  */
-@Entity(name = "menu")
-public class Menu implements Serializable
+@Entity
+@Table(schema = "food", name = "menu")
+public class Menu
 {
 
     private static final String sequence_name = "menu_mid_seq";
@@ -33,22 +35,19 @@ public class Menu implements Serializable
     @Expose
     private Integer mid;
 
-    @Basic(optional = false)
-    @Column(nullable = false, length = 50)
-    @Expose
+    @Size(max = 50)
+    @Column(length = 50)
     private String name;
 
-    @Column(precision = 17, scale = 17)
-    @Expose
+    @Column(precision = 6, scale = 2)
     private Double price;
 
-    @OneToMany(mappedBy = "mid")
-    private List<OrderContent> orderContentList;
+    @OneToMany(mappedBy = "menu")
+    private List<Tagging> taggingList;
 
-    @JoinColumn(name = "rid", referencedColumnName = "rid", nullable = false)
-    @ManyToOne(optional = false)
-    @Expose
-    private Restaurant rid;
+    @JoinColumn(name = "rid", referencedColumnName = "rid")
+    @ManyToOne
+    private Restaurant restaurant;
 
     public Menu()
     {
@@ -57,12 +56,6 @@ public class Menu implements Serializable
     public Menu(Integer mid)
     {
         this.mid = mid;
-    }
-
-    public Menu(Integer mid, String name)
-    {
-        this.mid = mid;
-        this.name = name;
     }
 
     public Integer getMid()
@@ -95,24 +88,24 @@ public class Menu implements Serializable
         this.price = price;
     }
 
-    public List<OrderContent> getOrderContentList()
+    public List<Tagging> getTaggingList()
     {
-        return orderContentList;
+        return taggingList;
     }
 
-    public void setOrderContentList(List<OrderContent> orderContentList)
+    public void setTaggingList(List<Tagging> taggingList)
     {
-        this.orderContentList = orderContentList;
+        this.taggingList = taggingList;
     }
 
-    public Restaurant getRid()
+    public Restaurant getRestaurant()
     {
-        return rid;
+        return restaurant;
     }
 
-    public void setRid(Restaurant rid)
+    public void setRestaurant(Restaurant restaurant)
     {
-        this.rid = rid;
+        this.restaurant = restaurant;
     }
 
     @Override
@@ -132,17 +125,13 @@ public class Menu implements Serializable
             return false;
         }
         Menu other = (Menu) object;
-        if ((this.mid == null && other.mid != null) || (this.mid != null && !this.mid.equals(other.mid)))
-        {
-            return false;
-        }
-        return true;
+        return !((this.mid == null && other.mid != null) || (this.mid != null && !this.mid.equals(other.mid)));
     }
 
     @Override
     public String toString()
     {
-        return "rugal.food.core.entity.Menu[ mid=" + mid + " ]";
+        return "ga.rugal.food.core.entity.Menu[ mid=" + mid + " ]";
     }
 
 }
