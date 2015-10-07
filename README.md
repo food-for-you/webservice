@@ -16,7 +16,7 @@
 7. Documentation: git WIKI, [rugal](rugal.ga)
 8. Design: Visio, Gliffy, Dia: `eps`, `svg`
 8. Continuous Integration: [travis](https://travis-ci.org/)
-9. DB: Mysql/Postgresql
+9. DB: Postgresql 9.4
 10. Code review: mandatory
 11. Issue tracker: github issue
 
