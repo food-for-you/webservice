@@ -12,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 /**
@@ -20,11 +19,11 @@ import javax.validation.constraints.Size;
  * @author Rugal Bernstein
  */
 @Entity
-@Table(schema = "food", name = "client")
-public class Client
+@Table(schema = "food", name = "tag")
+public class Tag
 {
 
-    private static final String sequence_name = "client_cid_seq";
+    private static final String sequence_name = "tag_tid_seq";
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = sequence_name)
@@ -32,45 +31,32 @@ public class Client
     @Basic(optional = false)
     @Column(nullable = false)
     @Expose
-    private Integer cid;
-
-    @Size(max = 50)
-    @Column(length = 50)
-    private String name;
-
-    @Size(max = 50)
-    @Column(length = 50)
-    private String credential;
-
-    @Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message = "Invalid email")
-    @Size(max = 50)
-    @Column(length = 50)
-    private String email;
+    private Integer tid;
 
     @Size(max = 20)
     @Column(length = 20)
-    private String phone;
+    private String name;
 
-    @OneToMany(mappedBy = "cid")
+    @OneToMany(mappedBy = "tag")
     private List<Tagging> taggingList;
 
-    public Client()
+    public Tag()
     {
     }
 
-    public Client(Integer cid)
+    public Tag(Integer tid)
     {
-        this.cid = cid;
+        this.tid = tid;
     }
 
-    public Integer getCid()
+    public Integer getTid()
     {
-        return cid;
+        return tid;
     }
 
-    public void setCid(Integer cid)
+    public void setTid(Integer tid)
     {
-        this.cid = cid;
+        this.tid = tid;
     }
 
     public String getName()
@@ -81,36 +67,6 @@ public class Client
     public void setName(String name)
     {
         this.name = name;
-    }
-
-    public String getCredential()
-    {
-        return credential;
-    }
-
-    public void setCredential(String credential)
-    {
-        this.credential = credential;
-    }
-
-    public String getEmail()
-    {
-        return email;
-    }
-
-    public void setEmail(String email)
-    {
-        this.email = email;
-    }
-
-    public String getPhone()
-    {
-        return phone;
-    }
-
-    public void setPhone(String phone)
-    {
-        this.phone = phone;
     }
 
     public List<Tagging> getTaggingList()
@@ -127,7 +83,7 @@ public class Client
     public int hashCode()
     {
         int hash = 0;
-        hash += (cid != null ? cid.hashCode() : 0);
+        hash += (tid != null ? tid.hashCode() : 0);
         return hash;
     }
 
@@ -135,18 +91,22 @@ public class Client
     public boolean equals(Object object)
     {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Client))
+        if (!(object instanceof Tag))
         {
             return false;
         }
-        Client other = (Client) object;
-        return !((this.cid == null && other.cid != null) || (this.cid != null && !this.cid.equals(other.cid)));
+        Tag other = (Tag) object;
+        if ((this.tid == null && other.tid != null) || (this.tid != null && !this.tid.equals(other.tid)))
+        {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public String toString()
     {
-        return "ga.rugal.food.core.entity.Client[ cid=" + cid + " ]";
+        return "ga.rugal.food.core.entity.Tag[ tid=" + tid + " ]";
     }
 
 }
