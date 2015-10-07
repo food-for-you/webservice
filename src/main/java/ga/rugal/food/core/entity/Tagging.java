@@ -33,7 +33,7 @@ public class Tagging
     private Long gid;
 
     @Column(nullable = false)
-    private Integer weight;
+    private Integer weight = 1;
 
     @JoinColumn(name = "mid", referencedColumnName = "mid")
     @ManyToOne
@@ -65,9 +65,10 @@ public class Tagging
         return gid;
     }
 
-    public void setGid(Long gid)
+    public Tagging setGid(Long gid)
     {
         this.gid = gid;
+        return this;
     }
 
     public Integer getWeight()
@@ -75,9 +76,10 @@ public class Tagging
         return weight;
     }
 
-    public void setWeight(Integer weight)
+    public Tagging setWeight(Integer weight)
     {
         this.weight = weight;
+        return this;
     }
 
     public Menu getMenu()
@@ -85,9 +87,10 @@ public class Tagging
         return menu;
     }
 
-    public void setMenu(Menu menu)
+    public Tagging setMenu(Menu menu)
     {
         this.menu = menu;
+        return this;
     }
 
     public Restaurant getRestaurant()
@@ -95,9 +98,10 @@ public class Tagging
         return restaurant;
     }
 
-    public void setRestaurant(Restaurant restaurant)
+    public Tagging setRestaurant(Restaurant restaurant)
     {
         this.restaurant = restaurant;
+        return this;
     }
 
     public Tag getTag()
@@ -105,9 +109,10 @@ public class Tagging
         return tag;
     }
 
-    public void setTag(Tag tag)
+    public Tagging setTag(Tag tag)
     {
         this.tag = tag;
+        return this;
     }
 
     public Client getClient()
@@ -115,9 +120,10 @@ public class Tagging
         return client;
     }
 
-    public void setClient(Client client)
+    public Tagging setClient(Client client)
     {
         this.client = client;
+        return this;
     }
 
     @Override

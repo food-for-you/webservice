@@ -70,9 +70,10 @@ public class Restaurant
         return rid;
     }
 
-    public void setRid(Integer rid)
+    public Restaurant setRid(Integer rid)
     {
         this.rid = rid;
+        return this;
     }
 
     public String getName()
@@ -80,9 +81,10 @@ public class Restaurant
         return name;
     }
 
-    public void setName(String name)
+    public Restaurant setName(String name)
     {
         this.name = name;
+        return this;
     }
 
     public String getAddress()
@@ -90,9 +92,10 @@ public class Restaurant
         return address;
     }
 
-    public void setAddress(String address)
+    public Restaurant setAddress(String address)
     {
         this.address = address;
+        return this;
     }
 
     public String getPhone()
@@ -100,9 +103,10 @@ public class Restaurant
         return phone;
     }
 
-    public void setPhone(String phone)
+    public Restaurant setPhone(String phone)
     {
         this.phone = phone;
+        return this;
     }
 
     public String getPostalcode()
@@ -110,9 +114,10 @@ public class Restaurant
         return postalcode;
     }
 
-    public void setPostalcode(String postalcode)
+    public Restaurant setPostalcode(String postalcode)
     {
         this.postalcode = postalcode;
+        return this;
     }
 
     public List<Tagging> getTaggingList()
@@ -120,9 +125,10 @@ public class Restaurant
         return taggingList;
     }
 
-    public void setTaggingList(List<Tagging> taggingList)
+    public Restaurant setTaggingList(List<Tagging> taggingList)
     {
         this.taggingList = taggingList;
+        return this;
     }
 
     public List<Menu> getMenuList()
@@ -130,9 +136,10 @@ public class Restaurant
         return menuList;
     }
 
-    public void setMenuList(List<Menu> menuList)
+    public Restaurant setMenuList(List<Menu> menuList)
     {
         this.menuList = menuList;
+        return this;
     }
 
     @Override

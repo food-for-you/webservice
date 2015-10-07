@@ -63,9 +63,10 @@ public class Menu
         return mid;
     }
 
-    public void setMid(Integer mid)
+    public Menu setMid(Integer mid)
     {
         this.mid = mid;
+        return this;
     }
 
     public String getName()
@@ -73,9 +74,10 @@ public class Menu
         return name;
     }
 
-    public void setName(String name)
+    public Menu setName(String name)
     {
         this.name = name;
+        return this;
     }
 
     public Double getPrice()
@@ -83,9 +85,10 @@ public class Menu
         return price;
     }
 
-    public void setPrice(Double price)
+    public Menu setPrice(Double price)
     {
         this.price = price;
+        return this;
     }
 
     public List<Tagging> getTaggingList()
@@ -93,9 +96,10 @@ public class Menu
         return taggingList;
     }
 
-    public void setTaggingList(List<Tagging> taggingList)
+    public Menu setTaggingList(List<Tagging> taggingList)
     {
         this.taggingList = taggingList;
+        return this;
     }
 
     public Restaurant getRestaurant()
@@ -103,9 +107,10 @@ public class Menu
         return restaurant;
     }
 
-    public void setRestaurant(Restaurant restaurant)
+    public Menu setRestaurant(Restaurant restaurant)
     {
         this.restaurant = restaurant;
+        return this;
     }
 
     @Override
