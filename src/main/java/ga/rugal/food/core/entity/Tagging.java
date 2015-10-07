@@ -32,6 +32,7 @@ public class Tagging
     @Expose
     private Long gid;
 
+    @Column(nullable = false)
     private Integer weight;
 
     @JoinColumn(name = "mid", referencedColumnName = "mid")
@@ -41,6 +42,10 @@ public class Tagging
     @JoinColumn(name = "rid", referencedColumnName = "rid")
     @ManyToOne
     private Restaurant restaurant;
+
+    @JoinColumn(name = "cid", referencedColumnName = "cid")
+    @ManyToOne
+    private Client client;
 
     @JoinColumn(name = "tid", referencedColumnName = "tid")
     @ManyToOne
@@ -103,6 +108,16 @@ public class Tagging
     public void setTag(Tag tag)
     {
         this.tag = tag;
+    }
+
+    public Client getClient()
+    {
+        return client;
+    }
+
+    public void setClient(Client client)
+    {
+        this.client = client;
     }
 
     @Override
