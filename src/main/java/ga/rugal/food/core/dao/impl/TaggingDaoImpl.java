@@ -7,12 +7,14 @@ import ml.rugal.sshcommon.page.Pagination;
 import org.hibernate.Criteria;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author Rugal Bernstein
  */
+@Repository
 public class TaggingDaoImpl extends HibernateBaseDao<Tagging, Long> implements TaggingDao
 {
 

@@ -39,6 +39,10 @@ public class Menu
     @Column(length = 50)
     private String name;
 
+    @Size(max = 20)
+    @Column(length = 20)
+    private String image;
+
     @Column(precision = 6, scale = 2)
     private Double price;
 
@@ -67,6 +71,16 @@ public class Menu
     {
         this.mid = mid;
         return this;
+    }
+
+    public String getImage()
+    {
+        return image;
+    }
+
+    public void setImage(String image)
+    {
+        this.image = image;
     }
 
     public String getName()

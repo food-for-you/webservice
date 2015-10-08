@@ -53,7 +53,7 @@ public class Restaurant
     @OneToMany(mappedBy = "restaurant")
     private List<Tagging> taggingList;
 
-    @OneToMany(mappedBy = "rid")
+    @OneToMany(mappedBy = "restaurant")
     private List<Menu> menuList;
 
     public Restaurant()

@@ -12,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 /**
@@ -42,7 +41,7 @@ public class Client
     @Column(length = 50)
     private String credential;
 
-    @Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message = "Invalid email")
+//    @Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message = "Invalid email")
     @Size(max = 50)
     @Column(length = 50)
     private String email;
@@ -51,7 +50,7 @@ public class Client
     @Column(length = 20)
     private String phone;
 
-    @OneToMany(mappedBy = "cid")
+    @OneToMany(mappedBy = "client")
     private List<Tagging> taggingList;
 
     public Client()
