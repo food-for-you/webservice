@@ -12,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 /**
@@ -42,7 +41,7 @@ public class Client
     @Column(length = 50)
     private String credential;
 
-    @Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message = "Invalid email")
+//    @Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message = "Invalid email")
     @Size(max = 50)
     @Column(length = 50)
     private String email;
@@ -51,7 +50,7 @@ public class Client
     @Column(length = 20)
     private String phone;
 
-    @OneToMany(mappedBy = "cid")
+    @OneToMany(mappedBy = "client")
     private List<Tagging> taggingList;
 
     public Client()
@@ -68,9 +67,10 @@ public class Client
         return cid;
     }
 
-    public void setCid(Integer cid)
+    public Client setCid(Integer cid)
     {
         this.cid = cid;
+        return this;
     }
 
     public String getName()
@@ -78,9 +78,10 @@ public class Client
         return name;
     }
 
-    public void setName(String name)
+    public Client setName(String name)
     {
         this.name = name;
+        return this;
     }
 
     public String getCredential()
@@ -88,9 +89,10 @@ public class Client
         return credential;
     }
 
-    public void setCredential(String credential)
+    public Client setCredential(String credential)
     {
         this.credential = credential;
+        return this;
     }
 
     public String getEmail()
@@ -98,9 +100,10 @@ public class Client
         return email;
     }
 
-    public void setEmail(String email)
+    public Client setEmail(String email)
     {
         this.email = email;
+        return this;
     }
 
     public String getPhone()
@@ -108,9 +111,10 @@ public class Client
         return phone;
     }
 
-    public void setPhone(String phone)
+    public Client setPhone(String phone)
     {
         this.phone = phone;
+        return this;
     }
 
     public List<Tagging> getTaggingList()
@@ -118,9 +122,10 @@ public class Client
         return taggingList;
     }
 
-    public void setTaggingList(List<Tagging> taggingList)
+    public Client setTaggingList(List<Tagging> taggingList)
     {
         this.taggingList = taggingList;
+        return this;
     }
 
     @Override

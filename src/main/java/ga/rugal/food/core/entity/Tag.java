@@ -54,9 +54,10 @@ public class Tag
         return tid;
     }
 
-    public void setTid(Integer tid)
+    public Tag setTid(Integer tid)
     {
         this.tid = tid;
+        return this;
     }
 
     public String getName()
@@ -64,9 +65,10 @@ public class Tag
         return name;
     }
 
-    public void setName(String name)
+    public Tag setName(String name)
     {
         this.name = name;
+        return this;
     }
 
     public List<Tagging> getTaggingList()
@@ -74,9 +76,10 @@ public class Tag
         return taggingList;
     }
 
-    public void setTaggingList(List<Tagging> taggingList)
+    public Tag setTaggingList(List<Tagging> taggingList)
     {
         this.taggingList = taggingList;
+        return this;
     }
 
     @Override

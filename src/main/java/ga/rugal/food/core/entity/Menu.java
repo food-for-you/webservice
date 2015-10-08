@@ -39,6 +39,10 @@ public class Menu
     @Column(length = 50)
     private String name;
 
+    @Size(max = 20)
+    @Column(length = 20)
+    private String image;
+
     @Column(precision = 6, scale = 2)
     private Double price;
 
@@ -63,9 +67,20 @@ public class Menu
         return mid;
     }
 
-    public void setMid(Integer mid)
+    public Menu setMid(Integer mid)
     {
         this.mid = mid;
+        return this;
+    }
+
+    public String getImage()
+    {
+        return image;
+    }
+
+    public void setImage(String image)
+    {
+        this.image = image;
     }
 
     public String getName()
@@ -73,9 +88,10 @@ public class Menu
         return name;
     }
 
-    public void setName(String name)
+    public Menu setName(String name)
     {
         this.name = name;
+        return this;
     }
 
     public Double getPrice()
@@ -83,9 +99,10 @@ public class Menu
         return price;
     }
 
-    public void setPrice(Double price)
+    public Menu setPrice(Double price)
     {
         this.price = price;
+        return this;
     }
 
     public List<Tagging> getTaggingList()
@@ -93,9 +110,10 @@ public class Menu
         return taggingList;
     }
 
-    public void setTaggingList(List<Tagging> taggingList)
+    public Menu setTaggingList(List<Tagging> taggingList)
     {
         this.taggingList = taggingList;
+        return this;
     }
 
     public Restaurant getRestaurant()
@@ -103,9 +121,10 @@ public class Menu
         return restaurant;
     }
 
-    public void setRestaurant(Restaurant restaurant)
+    public Menu setRestaurant(Restaurant restaurant)
     {
         this.restaurant = restaurant;
+        return this;
     }
 
     @Override
