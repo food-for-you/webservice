@@ -1,5 +1,5 @@
 #Food for you
-[![Build Status](https://travis-ci.org/Rugal/webservice.svg?branch=master)](https://travis-ci.org/Rugal/webservice)  [![Circle CI](https://circleci.com/gh/Rugal/webservice.svg?style=svg)](https://circleci.com/gh/Rugal/webservice)  
+[![Build Status](https://travis-ci.org/food-for-you/webservice.svg?branch=master)](https://travis-ci.org/food-for-you/webservice)   [![Circle CI](https://circleci.com/gh/food-for-you/webservice.svg?style=svg)](https://circleci.com/gh/food-for-you/webservice)    
 
 ##function
 1. Random recommend (Flavor based, thorough random)
