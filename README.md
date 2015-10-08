@@ -1,5 +1,5 @@
 #Food for you
-
+[![Circle CI](https://circleci.com/gh/Rugal/webservice.svg?style=svg)](https://circleci.com/gh/Rugal/webservice)  
 
 ##function
 1. Random recommend (Flavor based, thorough random)
