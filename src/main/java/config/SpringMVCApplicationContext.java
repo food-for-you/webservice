@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
+import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.GsonHttpMessageConverter;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
@@ -50,7 +51,7 @@ public class SpringMVCApplicationContext extends WebMvcConfigurerAdapter
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer)
     {
-        configurer.enable();
+//        configurer.enable();
     }
 
     @Override
@@ -70,12 +71,29 @@ public class SpringMVCApplicationContext extends WebMvcConfigurerAdapter
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters)
     {
+        converters.add(gsonHttpMessageConverter());
+        converters.add(byteArrayHttpMessageConverter());
+    }
+
+    private HttpMessageConverter byteArrayHttpMessageConverter()
+    {
+        ByteArrayHttpMessageConverter messageConverter = new ByteArrayHttpMessageConverter();
+        List<MediaType> supportedMediaTypes = new ArrayList<>();
+        supportedMediaTypes.add(MediaType.IMAGE_GIF);
+        supportedMediaTypes.add(MediaType.IMAGE_JPEG);
+        supportedMediaTypes.add(MediaType.IMAGE_PNG);
+        messageConverter.setSupportedMediaTypes(supportedMediaTypes);
+        return messageConverter;
+    }
+
+    private HttpMessageConverter gsonHttpMessageConverter()
+    {
         GsonHttpMessageConverter messageConverter = new GsonHttpMessageConverter();
         messageConverter.setGson(new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create());
         List<MediaType> supportedMediaTypes = new ArrayList<>();
         supportedMediaTypes.add(MediaType.APPLICATION_JSON);
         messageConverter.setSupportedMediaTypes(supportedMediaTypes);
-        converters.add(messageConverter);
+        return messageConverter;
     }
 
 //    @Bean
@@ -98,7 +116,7 @@ public class SpringMVCApplicationContext extends WebMvcConfigurerAdapter
     public AbstractHandlerMapping defaultAnnotationHandlerMapping()
     {
         RequestMappingHandlerMapping mapping = new RequestMappingHandlerMapping();
-        mapping.setUseSuffixPatternMatch(false);
+//        mapping.setUseSuffixPatternMatch(false);
         //Seems those parameters not important anymore after I use URI as parameter instead
 //        mapping.setUrlDecode(false);
 //        mapping.setAlwaysUseFullPath(true);

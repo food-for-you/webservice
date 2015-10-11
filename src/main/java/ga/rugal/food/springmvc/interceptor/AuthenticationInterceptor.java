@@ -1,16 +1,9 @@
 package ga.rugal.food.springmvc.interceptor;
 
-import config.SystemDefaultProperties;
-import ga.rugal.food.common.CommonLogContent;
-import ga.rugal.food.common.CommonMessageContent;
-import java.io.IOException;
-import java.text.MessageFormat;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import ml.rugal.sshcommon.springmvc.util.Message;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -52,24 +45,7 @@ public class AuthenticationInterceptor extends BaseInterceptor
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception
     {
-        String id = request.getHeader(SystemDefaultProperties.ID);
-        String credential = request.getHeader(SystemDefaultProperties.CREDENTIAL);
-        boolean status = true;
-        LOG.debug(MessageFormat.format(CommonLogContent.USER_TRY_ACCESS,
-                                       id,
-                                       request.getRequestURI(),
-                                       request.getRemoteAddr()));
-        if (!isAuthenticatedUser(id, credential))
-        {
-            status = false;
-            deniedResponse(response);
-            LOG.warn(MessageFormat.format(CommonLogContent.USER_ACCESS_FAILED,
-                                          id,
-                                          credential,
-                                          request.getRequestURI(),
-                                          request.getRemoteAddr()));
-        }
-        return status;
+        return true;
     }
 
     /**
@@ -83,18 +59,6 @@ public class AuthenticationInterceptor extends BaseInterceptor
     @Override
     protected void deniedResponse(HttpServletResponse response)
     {
-        try
-        {
-            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-            response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-            response.getWriter().print(gson.toJson(Message.failMessage(CommonMessageContent.ACCESS_FORBIDDEN)));
-
-        }
-        catch (IOException e)
-        {
-            LOG.error("Unable to get response writer", e);
-        }
-
     }
 
     /**
@@ -125,10 +89,6 @@ public class AuthenticationInterceptor extends BaseInterceptor
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception
     {
-        LOG.debug(MessageFormat.format(CommonLogContent.USER_ACCESS_SUCCEEDED,
-                                       request.getHeader(SystemDefaultProperties.ID),
-                                       request.getRequestURI(),
-                                       request.getRemoteAddr()));
     }
 
     @Override

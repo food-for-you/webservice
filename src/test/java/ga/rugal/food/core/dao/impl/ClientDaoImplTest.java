@@ -49,6 +49,7 @@ public class ClientDaoImplTest extends DBTestBase
         int pageSize = 1;
         Pagination result = clientDao.getPage(pageNo, pageSize);
         Assert.assertEquals(1, result.getList().size());
+        System.out.println("verified");
     }
 
     @Test
