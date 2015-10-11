@@ -1,18 +1,11 @@
 package ga.rugal.food.springmvc.interceptor;
 
-import config.SystemDefaultProperties;
-import ga.rugal.food.common.CommonLogContent;
-import ga.rugal.food.common.CommonMessageContent;
 import ga.rugal.food.springmvc.annotation.Role;
-import java.io.IOException;
 import java.lang.annotation.Annotation;
-import java.text.MessageFormat;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import ml.rugal.sshcommon.springmvc.util.Message;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -48,29 +41,7 @@ public class AuthorityInterceptor extends BaseInterceptor
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception
     {
-
-        String id = request.getHeader(SystemDefaultProperties.ID);
-        HandlerMethod hm = (HandlerMethod) handler;
-        LOG.debug(MessageFormat.format(CommonLogContent.USER_ROLE_ACCESS,
-                                       id,
-                                       getHandlerFullName(hm)));
-        boolean status = true;
-        if (isAccessible(id, hm))
-        {
-            LOG.debug(MessageFormat.format(CommonLogContent.USER_ROLE_SUCCEEDED,
-                                           id,
-                                           getHandlerFullName(hm)));
-        }
-        else
-        {
-            status = false;
-            deniedResponse(response);
-            LOG.warn(MessageFormat.format(CommonLogContent.USER_ROLE_FAILED,
-                                          id,
-                                          getHandlerFullName(hm)));
-
-        }
-        return status;
+        return true;
     }
 
     private String getHandlerFullName(HandlerMethod hm)
@@ -89,18 +60,6 @@ public class AuthorityInterceptor extends BaseInterceptor
     @Override
     protected void deniedResponse(HttpServletResponse response)
     {
-        try
-        {
-            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-            response.getWriter().print(gson.toJson(Message.failMessage(CommonMessageContent.PERMISSION_DENIED)));
-
-        }
-        catch (IOException e)
-        {
-            LOG.error("Unable to get response writer", e);
-        }
-
     }
 
     /**

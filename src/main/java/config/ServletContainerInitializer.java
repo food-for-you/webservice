@@ -3,6 +3,7 @@ package config;
 import javax.servlet.Filter;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRegistration;
 import org.springframework.orm.hibernate4.support.OpenSessionInViewFilter;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
@@ -24,6 +25,12 @@ public class ServletContainerInitializer extends AbstractAnnotationConfigDispatc
         servletContext.addFilter("characterEncodingFilter", characterEncodingFilter()).addMappingForUrlPatterns(null, true, "/*");
         servletContext.addFilter("hiddenHttpMethodFilter", hiddenHttpMethodFilter()).addMappingForUrlPatterns(null, true, "/*");
         super.onStartup(servletContext);
+    }
+
+    @Override
+    protected void customizeRegistration(ServletRegistration.Dynamic registration)
+    {
+        registration.setInitParameter("throwExceptionIfNoHandlerFound", "true");
     }
 
     /**

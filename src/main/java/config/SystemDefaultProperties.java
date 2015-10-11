@@ -21,4 +21,5 @@ public interface SystemDefaultProperties
 
     final String BYTE_ENCODING = "UTF-8";
 
+    final String IMAGE_FOLDER = "img";
 }
