@@ -2,9 +2,11 @@ package ga.rugal.food.core.dao.impl;
 
 import ga.rugal.food.core.dao.RestaurantDao;
 import ga.rugal.food.core.entity.Restaurant;
+import java.util.List;
 import ml.rugal.sshcommon.hibernate.HibernateBaseDao;
 import ml.rugal.sshcommon.page.Pagination;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -37,6 +39,15 @@ public class RestaurantDaoImpl extends HibernateBaseDao<Restaurant, Integer> imp
         return entity;
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public List<Restaurant> getByAddress(String address) {
+       Criteria crit = createCriteria();
+       crit.add(Restrictions.eq("address", address));
+       List<Restaurant> list = (List<Restaurant>) crit.list();
+       return list;
+    }
+    
     @Override
     public Restaurant save(Restaurant bean)
     {

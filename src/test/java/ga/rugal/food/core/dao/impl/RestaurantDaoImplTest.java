@@ -3,6 +3,7 @@ package ga.rugal.food.core.dao.impl;
 import ga.rugal.DBTestBase;
 import ga.rugal.food.core.dao.RestaurantDao;
 import ga.rugal.food.core.entity.Restaurant;
+import java.util.List;
 import ml.rugal.sshcommon.page.Pagination;
 import org.junit.After;
 import org.junit.Assert;
@@ -59,4 +60,16 @@ public class RestaurantDaoImplTest extends DBTestBase
         Assert.assertNotNull(restaurantDao.getByID(id));
     }
 
+    @Test
+    public void testGetByAddress()
+    {
+        System.out.println("getByAddress");
+        String address = "Rankin";
+        List <Restaurant> list = restaurantDao.getByAddress(address);
+        Assert.assertNotNull(list);
+        Assert.assertFalse(list.isEmpty());
+        for(Restaurant a:list) {
+            Assert.assertEquals(address, a.getAddress());
+        }       
+    }
 }
