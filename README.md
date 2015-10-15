@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/Rugal/webservice.svg?branch=master)](https://travis-ci.org/Rugal/webservice)  [![Circle CI](https://circleci.com/gh/Rugal/webservice.svg?style=svg)](https://circleci.com/gh/Rugal/webservice)  
 
 ##function
-1. Random recommend (Flavor based, thorough random)
+1. Random recommend (Flavor based, Location Based, thorough random)
 2. Selective
 
 
