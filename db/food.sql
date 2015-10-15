@@ -249,7 +249,7 @@ COPY client (cid, name, credential, email, phone) FROM stdin;
 -- Name: client_cid_seq; Type: SEQUENCE SET; Schema: food; Owner: postgres
 --
 
-SELECT pg_catalog.setval('client_cid_seq', 19, true);
+SELECT pg_catalog.setval('client_cid_seq', 47, true);
 
 
 --
@@ -257,6 +257,32 @@ SELECT pg_catalog.setval('client_cid_seq', 19, true);
 --
 
 COPY menu (mid, name, price, rid, image) FROM stdin;
+35	Beans	10	\N	XsjNbR.png
+36	braised_pork_chops	10	\N	RAW5o5.png
+37	Burger	10	\N	B6LI30.png
+38	Chaomian_ChikenShrimp	10	\N	ZZLuiu.png
+39	ChikenFeet	10	\N	NNO7Dt.png
+40	ChikenPotato	10	\N	OKKxBG.png
+41	ChikenSausage	10	\N	XEN7qs.png
+42	CurryBeef	10	\N	mOYbfO.png
+43	Curry_Shrimp_Noodles	10	\N	Gw35Cj.png
+44	DuckNoodles	10	\N	wWbyPf.png
+45	HotFiash	10	\N	m7Ox9f.png
+46	Huiguorou	10	\N	sERJWG.jpeg
+47	JapaneseBeefHotpot	10	\N	BibmYC.png
+48	KoreanFriedChiken	10	\N	9GTO6O.png
+49	Korean_ZhaJiangMian	10	\N	ZJejGo.png
+50	Mushroom_Chiken	10	\N	daAd0l.png
+51	OctopusNoodles	10	\N	T9bF6R.png
+52	Pancake	10	\N	Gr17xM.png
+53	Pizza	10	\N	GTfKc3.png
+54	Sandwish	10	\N	T3shHI.png
+55	Sashimi	10	\N	wM4WMu.png
+56	SeasonalBean	10	\N	G8pJYn.png
+57	SpecyTOFU	10	\N	nGeo7Y.png
+58	Sushi	10	\N	BnrHVS.png
+59	SweetSourChiken	10	\N	S3EOSq.png
+60	ThaiNoodles	10	\N	vWkJRk.png
 \.
 
 
@@ -264,7 +290,7 @@ COPY menu (mid, name, price, rid, image) FROM stdin;
 -- Name: menu_mid_seq; Type: SEQUENCE SET; Schema: food; Owner: postgres
 --
 
-SELECT pg_catalog.setval('menu_mid_seq', 10, true);
+SELECT pg_catalog.setval('menu_mid_seq', 60, true);
 
 
 --
@@ -279,7 +305,7 @@ COPY restaurant (rid, name, address, phone, postalcode) FROM stdin;
 -- Name: restaurant_rid_seq; Type: SEQUENCE SET; Schema: food; Owner: postgres
 --
 
-SELECT pg_catalog.setval('restaurant_rid_seq', 12, true);
+SELECT pg_catalog.setval('restaurant_rid_seq', 48, true);
 
 
 --
@@ -294,7 +320,7 @@ COPY tag (tid, name) FROM stdin;
 -- Name: tag_tid_seq; Type: SEQUENCE SET; Schema: food; Owner: postgres
 --
 
-SELECT pg_catalog.setval('tag_tid_seq', 8, true);
+SELECT pg_catalog.setval('tag_tid_seq', 42, true);
 
 
 --
@@ -309,7 +335,7 @@ COPY tagging (gid, tid, mid, rid, weight, cid) FROM stdin;
 -- Name: tagging_gid_seq; Type: SEQUENCE SET; Schema: food; Owner: postgres
 --
 
-SELECT pg_catalog.setval('tagging_gid_seq', 4, true);
+SELECT pg_catalog.setval('tagging_gid_seq', 16, true);
 
 
 --
