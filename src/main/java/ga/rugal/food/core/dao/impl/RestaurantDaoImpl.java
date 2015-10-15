@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
- * @author Rugal Bernstein
+ * @author Rugal Bernstein, Ying Mi
  */
 @Repository
 public class RestaurantDaoImpl extends HibernateBaseDao<Restaurant, Integer> implements RestaurantDao
@@ -38,7 +38,7 @@ public class RestaurantDaoImpl extends HibernateBaseDao<Restaurant, Integer> imp
         Restaurant entity = get(id);
         return entity;
     }
-
+    //retun list of resaurant with matched address
     @Override
     @Transactional(readOnly = true)
     public List<Restaurant> getByAddress(String address) {

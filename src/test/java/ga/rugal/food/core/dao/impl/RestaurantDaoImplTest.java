@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
- * @author Rugal Bernstein
+ * @author Rugal Bernstein, Ying Mi
  */
 public class RestaurantDaoImplTest extends DBTestBase
 {
@@ -59,7 +59,7 @@ public class RestaurantDaoImplTest extends DBTestBase
         Integer id = restaurant.getRid();
         Assert.assertNotNull(restaurantDao.getByID(id));
     }
-
+    
     @Test
     public void testGetByAddress()
     {
@@ -68,8 +68,8 @@ public class RestaurantDaoImplTest extends DBTestBase
         List <Restaurant> list = restaurantDao.getByAddress(address);
         Assert.assertNotNull(list);
         Assert.assertFalse(list.isEmpty());
-        for(Restaurant a:list) {
+        list.stream().forEach((a) -> {
             Assert.assertEquals(address, a.getAddress());
-        }       
+        });       
     }
 }

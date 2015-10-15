@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
- * @author Rugal Bernstein
+ * @author Rugal Bernstein, Ying Mi
  */
 public interface RestaurantDao
 {
@@ -23,6 +23,7 @@ public interface RestaurantDao
 
     Restaurant save(Restaurant bean);
     
+    //Get restaurant by address
     @Transactional(readOnly = true)
     List<Restaurant> getByAddress(String address);
 
