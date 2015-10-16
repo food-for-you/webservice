@@ -8,7 +8,6 @@ package ga.rugal.food.springmvc.controller;
 import ga.rugal.food.common.CommonMessageContent;
 import ga.rugal.food.core.service.RestaurantService;
 import ga.rugal.food.core.entity.Menu;
-import javax.servlet.http.HttpServletResponse;
 import ml.rugal.sshcommon.springmvc.util.Message;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,15 +30,14 @@ public class RandomMenuAction {
     private RestaurantService restaurantService;
     
     @ResponseBody
-    @RequestMapping(method = RequestMethod.GET)
-    public Object recommendByLocation(HttpServletResponse response) 
+    @RequestMapping(method = RequestMethod.GET, produces="application/json;charset=UTF-8")
+    public Object recommendByLocation() 
     {
         Menu menu = restaurantService.getMenuByLocation();
         if (null == menu)
         {
-            response.setContentType(MediaType.APPLICATION_JSON_VALUE);
             return Message.failMessage(CommonMessageContent.MENU_NOT_FOUND);
-        } else
+        }
         return Message.successMessage(CommonMessageContent.GET_MENU, menu);
     }
     
