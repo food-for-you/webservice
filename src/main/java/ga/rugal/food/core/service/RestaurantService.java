@@ -15,13 +15,18 @@ import org.springframework.transaction.annotation.Transactional;
  */
 public interface RestaurantService {
     
-    @Transactional(readOnly = true) 
-    List<Restaurant> getByAddress(String address);
+    Restaurant save(Restaurant bean);
     
+    Restaurant deleteById(Integer id);
+    
+    @Transactional(readOnly = true) 
+    List<Restaurant> getWholeList();
     
     @Transactional(readOnly = true)
     Pagination getPage(int pageNo, int pageSize);
     
     @Transactional(readOnly = true)
-    Menu getMenuByLocation(String address);
+    Menu getMenuByLocation();
+    
+    
 }

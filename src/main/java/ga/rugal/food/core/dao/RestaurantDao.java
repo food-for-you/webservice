@@ -25,7 +25,7 @@ public interface RestaurantDao
     
     //Get restaurant by address
     @Transactional(readOnly = true)
-    List<Restaurant> getByAddress(String address);
+    List<Restaurant> getWholeList();
 
     Restaurant updateByUpdater(Updater<Restaurant> updater);
 }

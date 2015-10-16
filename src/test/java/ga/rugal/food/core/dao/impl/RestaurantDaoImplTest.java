@@ -2,6 +2,7 @@ package ga.rugal.food.core.dao.impl;
 
 import ga.rugal.DBTestBase;
 import ga.rugal.food.core.dao.RestaurantDao;
+import ga.rugal.food.core.entity.Menu;
 import ga.rugal.food.core.entity.Restaurant;
 import java.util.List;
 import ml.rugal.sshcommon.page.Pagination;
@@ -61,15 +62,17 @@ public class RestaurantDaoImplTest extends DBTestBase
     }
     
     @Test
-    public void testGetByAddress()
+    public void testGetWholeList()
     {
-        System.out.println("getByAddress");
-        String address = "Rankin";
-        List <Restaurant> list = restaurantDao.getByAddress(address);
+        System.out.println("getWholeList");
+        //String address = "Rankin";
+        List <Restaurant> list = restaurantDao.getWholeList();
         Assert.assertNotNull(list);
         Assert.assertFalse(list.isEmpty());
-        list.stream().forEach((a) -> {
-            Assert.assertEquals(address, a.getAddress());
-        });       
+        //List<Menu> mList = list.get(1).getMenuList();
+//        for(Menu m : mList) {
+//            System.out.println(m.getName());
+//        }
+        //Assert.assertTrue(mList.size() == 0);
     }
 }
