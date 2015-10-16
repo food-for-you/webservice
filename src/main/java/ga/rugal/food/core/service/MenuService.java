@@ -15,7 +15,9 @@ import org.springframework.transaction.annotation.Transactional;
  */
 public interface MenuService {
     
-    Menu getByRestaurantID(Integer rid);
+    Menu save(Menu bean);
+    
+    //Menu getByRestaurantID(Integer rid);
     
     @Transactional(readOnly = true)
     Pagination getPage(int pageNo, int pageSize);

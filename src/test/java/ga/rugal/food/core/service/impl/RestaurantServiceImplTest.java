@@ -25,6 +25,9 @@ public class RestaurantServiceImplTest extends DBTestBase {
     private Restaurant restaurant;
     
     @Autowired
+    private Menu menu;
+    
+    @Autowired
     private RestaurantService restaurantService;    
     
     public RestaurantServiceImplTest() {

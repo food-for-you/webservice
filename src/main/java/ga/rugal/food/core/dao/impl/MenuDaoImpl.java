@@ -28,7 +28,7 @@ public class MenuDaoImpl extends HibernateBaseDao<Menu, Integer> implements Menu
         Pagination page = findByCriteria(crit, pageNo, pageSize);
         return page;
     }
-
+    
     @Override
     @Transactional(readOnly = true)
     public Menu getByID(Integer id)
