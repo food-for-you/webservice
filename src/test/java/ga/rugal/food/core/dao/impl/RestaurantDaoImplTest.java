@@ -69,10 +69,7 @@ public class RestaurantDaoImplTest extends DBTestBase
         List <Restaurant> list = restaurantDao.getWholeList();
         Assert.assertNotNull(list);
         Assert.assertFalse(list.isEmpty());
-        //List<Menu> mList = list.get(1).getMenuList();
-//        for(Menu m : mList) {
-//            System.out.println(m.getName());
-//        }
-        //Assert.assertTrue(mList.size() == 0);
+        Assert.assertTrue(list.size() > 0);
+        
     }
 }
