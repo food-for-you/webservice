@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ga.rugal.food.core.service.impl;
 
 import ga.rugal.DBTestBase;
@@ -39,8 +34,7 @@ public class RestaurantServiceImplTest extends DBTestBase {
     }
     
     @Before
-    public void setUp()
-    {
+    public void setUp() {
         System.out.println("setUp");
         restaurantService.save(restaurant);
         menuDao.save(menu);
@@ -48,8 +42,7 @@ public class RestaurantServiceImplTest extends DBTestBase {
     }
 
     @After
-    public void tearDown()
-    {
+    public void tearDown() {
         System.out.println("tearDown");
         menuDao.deleteById(menu.getMid());
         restaurantService.deleteById(restaurant.getRid());
@@ -61,6 +54,5 @@ public class RestaurantServiceImplTest extends DBTestBase {
         System.out.println("get menu by location");
         Menu menu = restaurantService.getMenuByLocation();
         Assert.assertNotNull(menu);
-    }
-    
+    }   
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ga.rugal.food.core.service.impl;
 
 import ga.rugal.food.core.entity.Restaurant;
@@ -66,6 +61,5 @@ public class RestaurantServiceImpl implements RestaurantService{
         Random rd = new Random();       
         Menu m = mList.get(rd.nextInt(mList.size()));
         return m;
-    }
-    
+    }   
 }

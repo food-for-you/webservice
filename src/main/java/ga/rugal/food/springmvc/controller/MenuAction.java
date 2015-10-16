@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ga.rugal.food.springmvc.controller;
 
 import ga.rugal.food.common.CommonMessageContent;
@@ -24,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping(value = "/menu")
 public class MenuAction {
-    private static final Logger LOG = LoggerFactory.getLogger(StaticResourceAction.class.getName());
+    private static final Logger LOG = LoggerFactory.getLogger(MenuAction.class.getName());
     
     @Autowired
     private RestaurantService restaurantService;
@@ -39,6 +34,5 @@ public class MenuAction {
             return Message.failMessage(CommonMessageContent.MENU_NOT_FOUND);
         }
         return Message.successMessage(CommonMessageContent.GET_MENU, menu);
-    }
-    
+    }    
 }

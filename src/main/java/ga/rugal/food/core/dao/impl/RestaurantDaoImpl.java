@@ -40,12 +40,11 @@ public class RestaurantDaoImpl extends HibernateBaseDao<Restaurant, Integer> imp
     //retun list of resaurant with matched address
     @Override
     @Transactional(readOnly = true)
-    public List<Restaurant> getWholeList() {
+    public List<Restaurant> getWholeList() 
+    {
        Criteria crit = createCriteria();      
-       //crit.add(Restrictions.eq("address", address));
        List<Restaurant> list = (List<Restaurant>) crit.list();
-       return list;
-        
+       return list;      
     }
     
     @Override
@@ -71,5 +70,4 @@ public class RestaurantDaoImpl extends HibernateBaseDao<Restaurant, Integer> imp
     {
         return Restaurant.class;
     }
-
 }

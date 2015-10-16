@@ -1,9 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ga.rugal.food.core.service;
+
 import ga.rugal.food.core.entity.Menu;
 import ga.rugal.food.core.entity.Restaurant;
 import java.util.List;
@@ -26,7 +22,5 @@ public interface RestaurantService {
     Pagination getPage(int pageNo, int pageSize);
     
     @Transactional(readOnly = true)
-    Menu getMenuByLocation();
-    
-    
+    Menu getMenuByLocation();    
 }

@@ -24,27 +24,27 @@ public class RestaurantDaoImplTest extends DBTestBase
     @Autowired
     private RestaurantDao restaurantDao;
 
-    public RestaurantDaoImplTest()
-    {
+    public RestaurantDaoImplTest(){
+    
     }
 
     @Before
-    public void setUp()
-    {
+    public void setUp() {
+        
         System.out.println("setUp");
         restaurantDao.save(restaurant);
     }
 
     @After
-    public void tearDown()
-    {
+    public void tearDown() {
+        
         System.out.println("tearDown");
         restaurantDao.deleteById(restaurant.getRid());
     }
 
     @Test
-    public void testGetPage()
-    {
+    public void testGetPage() {
+        
         System.out.println("getPage");
         int pageNo = 1;
         int pageSize = 1;
@@ -53,16 +53,16 @@ public class RestaurantDaoImplTest extends DBTestBase
     }
 
     @Test
-    public void testGetByID()
-    {
+    public void testGetByID() {
+        
         System.out.println("getByID");
         Integer id = restaurant.getRid();
         Assert.assertNotNull(restaurantDao.getByID(id));
     }
     
     @Test
-    public void testGetWholeList()
-    {
+    public void testGetWholeList() {
+        
         System.out.println("getWholeList");
         //String address = "Rankin";
         List <Restaurant> list = restaurantDao.getWholeList();

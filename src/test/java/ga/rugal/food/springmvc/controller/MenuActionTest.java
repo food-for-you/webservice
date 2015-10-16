@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ga.rugal.food.springmvc.controller;
 
 import ga.rugal.ControllerClientSideTestBase;
@@ -23,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  *
  * @author Ying Mi
  */
-public class MenuActionTest extends ControllerClientSideTestBase{
+public class MenuActionTest extends ControllerClientSideTestBase {
     
     public MenuActionTest() {
         
@@ -42,8 +37,7 @@ public class MenuActionTest extends ControllerClientSideTestBase{
     private RestaurantService restaurantService;    
     
     @Before
-    public void setUp()
-    {
+    public void setUp() {
         System.out.println("setUp");
         restaurantService.save(restaurant);
         menuDao.save(menu);
@@ -51,8 +45,7 @@ public class MenuActionTest extends ControllerClientSideTestBase{
     }
 
     @After
-    public void tearDown()
-    {
+    public void tearDown() {
         System.out.println("tearDown");
         menuDao.deleteById(menu.getMid());
         restaurantService.deleteById(restaurant.getRid());
@@ -67,6 +60,5 @@ public class MenuActionTest extends ControllerClientSideTestBase{
             .andExpect(status().isOk())
             .andDo(print());
             
-    }
-    
+    }    
 }

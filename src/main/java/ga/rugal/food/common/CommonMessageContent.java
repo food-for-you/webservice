@@ -15,5 +15,5 @@ public interface CommonMessageContent
     //Menu
     final String MENU_NOT_FOUND = "Menu not found";
     
-    final String GET_MENU = "get menu";
+    final String GET_MENU = "Get menu";
 }
