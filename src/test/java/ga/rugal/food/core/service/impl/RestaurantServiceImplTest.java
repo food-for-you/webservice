@@ -6,6 +6,7 @@
 package ga.rugal.food.core.service.impl;
 
 import ga.rugal.DBTestBase;
+import ga.rugal.food.core.dao.MenuDao;
 import ga.rugal.food.core.entity.Menu;
 import ga.rugal.food.core.entity.Restaurant;
 import ga.rugal.food.core.service.RestaurantService;
@@ -28,6 +29,9 @@ public class RestaurantServiceImplTest extends DBTestBase {
     private Menu menu;
     
     @Autowired
+    private MenuDao menuDao;
+    
+    @Autowired
     private RestaurantService restaurantService;    
     
     public RestaurantServiceImplTest() {
@@ -39,12 +43,15 @@ public class RestaurantServiceImplTest extends DBTestBase {
     {
         System.out.println("setUp");
         restaurantService.save(restaurant);
+        menuDao.save(menu);
+        menu.setRestaurant(restaurant);
     }
 
     @After
     public void tearDown()
     {
         System.out.println("tearDown");
+        menuDao.deleteById(menu.getMid());
         restaurantService.deleteById(restaurant.getRid());
     }
     
