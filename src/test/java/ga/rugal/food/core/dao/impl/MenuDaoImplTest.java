@@ -41,7 +41,7 @@ public class MenuDaoImplTest extends DBTestBase
         System.out.println("setUp");
         restaurantDao.save(restaurant);
         menuDao.save(menu);
-        menu.setRestaurant(restaurant);
+        //menu.setRestaurant(restaurant);
         
     }
 

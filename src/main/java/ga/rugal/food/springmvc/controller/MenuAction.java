@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @RequestMapping(value = "/menu")
-public class RandomMenuAction {
+public class MenuAction {
     private static final Logger LOG = LoggerFactory.getLogger(StaticResourceAction.class.getName());
     
     @Autowired
