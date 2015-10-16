@@ -3,6 +3,7 @@ package ga.rugal.food.core.dao.impl;
 import ga.rugal.DBTestBase;
 import ga.rugal.food.core.dao.RestaurantDao;
 import ga.rugal.food.core.entity.Restaurant;
+import java.util.List;
 import ml.rugal.sshcommon.page.Pagination;
 import org.junit.After;
 import org.junit.Assert;
@@ -12,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
- * @author Rugal Bernstein
+ * @author Rugal Bernstein, Ying Mi
  */
 public class RestaurantDaoImplTest extends DBTestBase
 {
@@ -23,27 +24,27 @@ public class RestaurantDaoImplTest extends DBTestBase
     @Autowired
     private RestaurantDao restaurantDao;
 
-    public RestaurantDaoImplTest()
-    {
+    public RestaurantDaoImplTest(){
+    
     }
 
     @Before
-    public void setUp()
-    {
+    public void setUp() {
+        
         System.out.println("setUp");
         restaurantDao.save(restaurant);
     }
 
     @After
-    public void tearDown()
-    {
+    public void tearDown() {
+        
         System.out.println("tearDown");
         restaurantDao.deleteById(restaurant.getRid());
     }
 
     @Test
-    public void testGetPage()
-    {
+    public void testGetPage() {
+        
         System.out.println("getPage");
         int pageNo = 1;
         int pageSize = 1;
@@ -52,11 +53,22 @@ public class RestaurantDaoImplTest extends DBTestBase
     }
 
     @Test
-    public void testGetByID()
-    {
+    public void testGetByID() {
+        
         System.out.println("getByID");
         Integer id = restaurant.getRid();
         Assert.assertNotNull(restaurantDao.getByID(id));
     }
-
+    
+    @Test
+    public void testGetWholeList() {
+        
+        System.out.println("getWholeList");
+        //String address = "Rankin";
+        List <Restaurant> list = restaurantDao.getWholeList();
+        Assert.assertNotNull(list);
+        Assert.assertFalse(list.isEmpty());
+        Assert.assertTrue(list.size() > 0);
+        
+    }
 }
