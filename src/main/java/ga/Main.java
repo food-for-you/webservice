@@ -1,4 +1,4 @@
-package config;
+package ga;
 
 import java.io.File;
 import org.apache.catalina.startup.Tomcat;
@@ -7,12 +7,10 @@ import org.apache.catalina.startup.Tomcat;
  *
  * @author Rugal Bernstein
  */
-public class TomcatMain
+public class Main
 {
-
     public static void main(String[] args) throws Exception
     {
-
         String webappDirLocation = "src/main/webapp/";
         Tomcat tomcat = new Tomcat();
         tomcat.setPort(8080);
