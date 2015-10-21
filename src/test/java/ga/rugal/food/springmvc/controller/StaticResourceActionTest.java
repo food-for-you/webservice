@@ -38,8 +38,8 @@ public class StaticResourceActionTest extends ControllerClientSideTestBase
             .accept(MediaType.IMAGE_GIF_VALUE, MediaType.IMAGE_JPEG_VALUE,
                     MediaType.IMAGE_PNG_VALUE, MediaType.APPLICATION_JSON_VALUE
             ))
-            .andExpect(status().isOk())
-            .andDo(print());
+            .andExpect(status().isOk());
+            //.andDo(print());
     }
 
     @Test
