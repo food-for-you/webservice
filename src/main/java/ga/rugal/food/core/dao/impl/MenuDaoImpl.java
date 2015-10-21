@@ -5,6 +5,7 @@ import ga.rugal.food.core.entity.Menu;
 import ml.rugal.sshcommon.hibernate.HibernateBaseDao;
 import ml.rugal.sshcommon.page.Pagination;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Projections;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -28,7 +29,16 @@ public class MenuDaoImpl extends HibernateBaseDao<Menu, Integer> implements Menu
         Pagination page = findByCriteria(crit, pageNo, pageSize);
         return page;
     }
-    
+
+    @Transactional(readOnly = true)
+    @Override
+    public int countTotal()
+    {
+        Criteria crit = createCriteria();
+        crit.setProjection(Projections.count("mid"));
+        return ((Number) crit.list().get(0)).intValue();
+    }
+
     @Override
     @Transactional(readOnly = true)
     public Menu getByID(Integer id)

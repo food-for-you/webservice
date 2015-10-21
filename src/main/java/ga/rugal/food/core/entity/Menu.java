@@ -22,7 +22,7 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(schema = "food", name = "menu")
-public class Menu
+public class Menu extends BaseObject<Menu>
 {
 
     private static final String sequence_name = "menu_mid_seq";
@@ -151,6 +151,12 @@ public class Menu
     public String toString()
     {
         return "ga.rugal.food.core.entity.Menu[ mid=" + mid + " ]";
+    }
+
+    @Override
+    protected Class<Menu> getRealClass()
+    {
+        return Menu.class;
     }
 
 }

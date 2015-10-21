@@ -6,6 +6,7 @@ import java.util.List;
 import ml.rugal.sshcommon.hibernate.HibernateBaseDao;
 import ml.rugal.sshcommon.page.Pagination;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Projections;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -37,16 +38,21 @@ public class RestaurantDaoImpl extends HibernateBaseDao<Restaurant, Integer> imp
         Restaurant entity = get(id);
         return entity;
     }
-    //retun list of resaurant with matched address
+
+    /**
+     * Return list of restaurant with matched address.
+     *
+     * @return
+     */
     @Override
     @Transactional(readOnly = true)
-    public List<Restaurant> getWholeList() 
+    public List<Restaurant> getWholeList()
     {
-       Criteria crit = createCriteria();      
-       List<Restaurant> list = (List<Restaurant>) crit.list();
-       return list;      
+        Criteria crit = createCriteria();
+        List<Restaurant> list = (List<Restaurant>) crit.list();
+        return list;
     }
-    
+
     @Override
     public Restaurant save(Restaurant bean)
     {
@@ -63,6 +69,15 @@ public class RestaurantDaoImpl extends HibernateBaseDao<Restaurant, Integer> imp
             getSession().delete(entity);
         }
         return entity;
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public int countTotal()
+    {
+        Criteria crit = createCriteria();
+        crit.setProjection(Projections.count("rid"));
+        return ((Number) crit.list().get(0)).intValue();
     }
 
     @Override

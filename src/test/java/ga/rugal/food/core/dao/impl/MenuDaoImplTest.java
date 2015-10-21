@@ -41,8 +41,6 @@ public class MenuDaoImplTest extends DBTestBase
         System.out.println("setUp");
         restaurantDao.save(restaurant);
         menuDao.save(menu);
-        //menu.setRestaurant(restaurant);
-        
     }
 
     @After
@@ -71,4 +69,11 @@ public class MenuDaoImplTest extends DBTestBase
         Assert.assertNotNull(menuDao.getByID(id));
     }
 
+    @Test
+    public void testCountTotal()
+    {
+        System.out.println("countTotal");
+        int count = menuDao.countTotal();
+        Assert.assertTrue(count > 0);
+    }
 }

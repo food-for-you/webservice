@@ -1,8 +1,10 @@
 package ga.rugal.food.springmvc.controller;
 
+import ga.rugal.food.common.CommonLogContent;
 import ga.rugal.food.common.CommonMessageContent;
-import ga.rugal.food.core.service.RestaurantService;
 import ga.rugal.food.core.entity.Menu;
+import ga.rugal.food.core.service.MenuService;
+import java.util.Random;
 import ml.rugal.sshcommon.springmvc.util.Message;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,21 +20,28 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @RequestMapping(value = "/menu")
-public class MenuAction {
+public class MenuAction
+{
+
     private static final Logger LOG = LoggerFactory.getLogger(MenuAction.class.getName());
-    
+
+    private final Random random = new Random();
+
     @Autowired
-    private RestaurantService restaurantService;
-    
+    private MenuService menuService;
+
     @ResponseBody
-    @RequestMapping(method = RequestMethod.GET, produces="application/json;charset=UTF-8")
-    public Object recommendByLocation() 
+    @RequestMapping(method = RequestMethod.GET)
+    public Message randomMenu()
     {
-        Menu menu = restaurantService.getMenuByLocation();
-        if (null == menu)
+        int total = menuService.countTotal();
+        LOG.debug(CommonLogContent.MENU_NUMBER, total);
+        if (0 == total)
         {
+            LOG.warn(CommonLogContent.NO_MENU);
             return Message.failMessage(CommonMessageContent.MENU_NOT_FOUND);
         }
+        Menu menu = (Menu) menuService.getPage(random.nextInt(total), 1).getList().get(0);
         return Message.successMessage(CommonMessageContent.GET_MENU, menu);
-    }    
+    }
 }

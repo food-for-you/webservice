@@ -11,8 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
  */
 public interface MenuDao
 {
+
     Menu save(Menu bean);
-    
+
     Menu deleteById(Integer id);
 
     @Transactional(readOnly = true)
@@ -20,6 +21,9 @@ public interface MenuDao
 
     @Transactional(readOnly = true)
     Pagination getPage(int pageNo, int pageSize);
-    
+
     Menu updateByUpdater(Updater<Menu> updater);
+
+    @Transactional(readOnly = true)
+    int countTotal();
 }
