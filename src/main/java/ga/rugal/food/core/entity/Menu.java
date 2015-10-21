@@ -37,6 +37,7 @@ public class Menu extends BaseObject<Menu>
 
     @Size(max = 50)
     @Column(length = 50)
+    @Expose
     private String name;
 
     @Size(max = 20)
@@ -44,6 +45,7 @@ public class Menu extends BaseObject<Menu>
     private String image;
 
     @Column(precision = 6, scale = 2)
+    @Expose
     private Double price;
 
     @OneToMany(mappedBy = "menu")
@@ -51,6 +53,7 @@ public class Menu extends BaseObject<Menu>
 
     @JoinColumn(name = "rid", referencedColumnName = "rid")
     @ManyToOne
+    @Expose
     private Restaurant restaurant;
 
     public Menu()
