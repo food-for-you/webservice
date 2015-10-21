@@ -9,6 +9,7 @@
     <description>This is a project for Software Engineering course</description>
     <properties>
         <spring-version>4.2.0.RELEASE</spring-version>
+        <tomcat.version>7.0.57</tomcat.version>
         <!-- Using utf-8 encoding -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -299,6 +300,21 @@
             <version>2.4</version>
         </dependency>
         <!-- Auto Append -->
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
+            <version>${tomcat.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-logging-juli</artifactId>
+            <version>${tomcat.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <version>${tomcat.version}</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
