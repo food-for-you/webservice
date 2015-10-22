@@ -36,18 +36,22 @@ public class Restaurant
 
     @Size(max = 50)
     @Column(length = 50)
+    @Expose
     private String name;
 
     @Size(max = 50)
     @Column(length = 50)
+    @Expose
     private String address;
 
     @Size(max = 20)
     @Column(length = 20)
+    @Expose
     private String phone;
 
     @Size(max = 10)
     @Column(length = 10)
+    @Expose
     private String postalcode;
 
     @OneToMany(mappedBy = "restaurant")

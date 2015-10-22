@@ -22,10 +22,17 @@ public interface RestaurantDao
     Pagination getPage(int pageNo, int pageSize);
 
     Restaurant save(Restaurant bean);
-    
-    //Get restaurant by address
+
+    /**
+     * Get restaurant by address
+     *
+     * @return
+     */
     @Transactional(readOnly = true)
     List<Restaurant> getWholeList();
+
+    @Transactional(readOnly = true)
+    int countTotal();
 
     Restaurant updateByUpdater(Updater<Restaurant> updater);
 }

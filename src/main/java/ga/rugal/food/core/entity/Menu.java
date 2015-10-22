@@ -22,7 +22,7 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(schema = "food", name = "menu")
-public class Menu
+public class Menu extends BaseObject<Menu>
 {
 
     private static final String sequence_name = "menu_mid_seq";
@@ -37,6 +37,7 @@ public class Menu
 
     @Size(max = 50)
     @Column(length = 50)
+    @Expose
     private String name;
 
     @Size(max = 20)
@@ -44,6 +45,7 @@ public class Menu
     private String image;
 
     @Column(precision = 6, scale = 2)
+    @Expose
     private Double price;
 
     @OneToMany(mappedBy = "menu")
@@ -51,6 +53,7 @@ public class Menu
 
     @JoinColumn(name = "rid", referencedColumnName = "rid")
     @ManyToOne
+    @Expose
     private Restaurant restaurant;
 
     public Menu()
@@ -151,6 +154,12 @@ public class Menu
     public String toString()
     {
         return "ga.rugal.food.core.entity.Menu[ mid=" + mid + " ]";
+    }
+
+    @Override
+    protected Class<Menu> getRealClass()
+    {
+        return Menu.class;
     }
 
 }

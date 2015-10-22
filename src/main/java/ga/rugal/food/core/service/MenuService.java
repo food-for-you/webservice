@@ -6,14 +6,22 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
- * @author jinsongchu
+ * @author Ying Mi, Rugal Bernstein
  */
-public interface MenuService {
-    
+public interface MenuService
+{
+
     Menu save(Menu bean);
-    
-    //Menu getByRestaurantID(Integer rid);
-    
+
     @Transactional(readOnly = true)
     Pagination getPage(int pageNo, int pageSize);
+
+    @Transactional(readOnly = true)
+    int countTotal();
+
+    Menu deleteById(Integer id);
+
+    @Transactional(readOnly = true)
+    Menu getByID(Integer id);
+
 }
