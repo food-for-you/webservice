@@ -59,6 +59,7 @@ public class TestApplicationContext
         return new Menu()
             .setName("great cussine")
             .setPrice(10.23)
+            .setImage(SystemDefaultProperties.DEFAULT_IMAGE)
             .setRestaurant(restaurant);
     }
 
