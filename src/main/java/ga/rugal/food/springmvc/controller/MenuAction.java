@@ -75,8 +75,13 @@ public class MenuAction
     public Object getImage(@PathVariable("mid") Integer mid, HttpServletResponse response)
     {
         Menu menu = menuService.getByID(mid);
+        if (null == menu)
+        {
+            response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+            return Message.failMessage(CommonMessageContent.IMAGE_NOT_FOUND);
+        }
         File image = new File(imageFolder, menu.getImage());
-        LOG.info(image.getAbsolutePath());
+        LOG.info(image.getPath());
         byte[] data;
 
         try
@@ -88,7 +93,6 @@ public class MenuAction
                 image = new File(imageFolder, SystemDefaultProperties.DEFAULT_IMAGE);
             }
             data = FileCopyUtils.copyToByteArray(image);
-
         }
         catch (IOException ex)
         {
@@ -100,7 +104,7 @@ public class MenuAction
         response.setContentType(context.getMimeType(image.getName()));
         response.setContentLength(data.length);
         //The code below is for in browser displaying
-        response.setHeader("Content-Disposition", String.format("inline; filename=\"%s\"", image.getName()));
+//        response.setHeader("Content-Disposition", String.format("inline; filename=\"%s\"", image.getName()));
         return data;
     }
 }
