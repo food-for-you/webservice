@@ -11,6 +11,8 @@ public interface SystemDefaultProperties
 
     final String SCHEMA = "food.";
 
+    final String DEFAULT_IMAGE = "rugal.jpg";
+
     final String ID = "id";
 
     final String CREDENTIAL = "credential";

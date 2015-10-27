@@ -70,4 +70,16 @@ public class MenuActionTest extends ControllerClientSideTestBase
         Menu getFromDB = menu.backToObject(message.getData());
         Assert.assertNotNull(getFromDB);
     }
+
+    @Test
+    public void testGetImage() throws Exception
+    {
+        System.out.println("getImage");
+        this.mockMvc.perform(get(String.format("/menu/%d/image", menu.getMid()))
+            .accept(MediaType.IMAGE_GIF_VALUE, MediaType.IMAGE_JPEG_VALUE,
+                    MediaType.IMAGE_PNG_VALUE, MediaType.APPLICATION_JSON_VALUE
+            ))
+            .andExpect(status().isOk())
+            .andDo(print());
+    }
 }

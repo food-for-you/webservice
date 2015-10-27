@@ -3,6 +3,7 @@ package ga.rugal.food.springmvc.controller;
 import ga.rugal.ControllerClientSideTestBase;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -13,6 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  *
  * @author Rugal Bernstein
  */
+@Ignore
 public class StaticResourceActionTest extends ControllerClientSideTestBase
 {
 
@@ -39,7 +41,7 @@ public class StaticResourceActionTest extends ControllerClientSideTestBase
                     MediaType.IMAGE_PNG_VALUE, MediaType.APPLICATION_JSON_VALUE
             ))
             .andExpect(status().isOk());
-            //.andDo(print());
+        //.andDo(print());
     }
 
     @Test

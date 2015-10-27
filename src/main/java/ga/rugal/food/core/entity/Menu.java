@@ -81,9 +81,10 @@ public class Menu extends BaseObject<Menu>
         return image;
     }
 
-    public void setImage(String image)
+    public Menu setImage(String image)
     {
         this.image = image;
+        return this;
     }
 
     public String getName()
