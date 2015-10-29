@@ -75,23 +75,20 @@ public class MenuAction
     public Object getImage(@PathVariable("mid") Integer mid, HttpServletResponse response)
     {
         Menu menu = menuService.getByID(mid);
-        if (null == menu)
-        {
-            response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-            return Message.failMessage(CommonMessageContent.IMAGE_NOT_FOUND);
-        }
-        File image = new File(imageFolder, menu.getImage());
-        LOG.info(image.getPath());
         byte[] data;
-
+        File image = new File(imageFolder, SystemDefaultProperties.DEFAULT_IMAGE);
         try
         {
+            if (null != menu)
+            {
+                image = new File(imageFolder, menu.getImage());
+            }
             if (!image.exists())
             {
                 //if no image file found in path
                 LOG.info(String.format(CommonLogContent.IMAGE_NOT_FOUND, image.getName()));
-                image = new File(imageFolder, SystemDefaultProperties.DEFAULT_IMAGE);
             }
+            LOG.trace(image.getPath());
             data = FileCopyUtils.copyToByteArray(image);
         }
         catch (IOException ex)
