@@ -61,8 +61,7 @@ public class MenuServiceImplTest extends DBTestBase{
     public void testGetRandomMenuByRetaurant() {
         System.out.println("getRandomMenuByRetaurant");
         Restaurant r = restaurantService.getRandomRestaurant();
-        List<Menu> list = menuService.getByRestaurant(r);
-        Menu m = menuService.getRandomMenuByRetaurant(list);
+        Menu m = menuService.getRandomMenuByRetaurant(r);
         Assert.notNull(m);
     }
 }

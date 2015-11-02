@@ -27,9 +27,9 @@ public interface MenuService
     Menu getByID(Integer id);
     
     @Transactional(readOnly = true)
-    List<Menu> getByRestaurant(Restaurant r);
+    List<Menu> getMenusByRestaurant(Restaurant r);
     
     @Transactional(readOnly = true)
-    Menu getRandomMenuByRetaurant(List<Menu> list);
+    Menu getRandomMenuByRetaurant(Restaurant r);
 
 }

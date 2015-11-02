@@ -75,9 +75,14 @@ public class MenuDaoImpl extends HibernateBaseDao<Menu, Integer> implements Menu
         return Menu.class;
     }
     
+    /**
+     * Find the menus which foreign key rid equals to restaurant object r
+     * @param r
+     * @return Give a list of menus
+     */
     @Override
     @Transactional(readOnly = true)
-    public List<Menu> getByRestaurant(Restaurant r) {     
+    public List<Menu> getMenusByRestaurant(Restaurant r) {     
         List<Menu> list = findByProperty("restaurant", r);
         return list;
     }

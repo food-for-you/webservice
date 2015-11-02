@@ -82,7 +82,7 @@ public class MenuDaoImplTest extends DBTestBase
     public void testgetMenuByRid() {
         System.out.println("getMenuByRid");
         Restaurant r = menu.getRestaurant();
-        List<Menu> list = menuDao.getByRestaurant(r);  
+        List<Menu> list = menuDao.getMenusByRestaurant(r);  
         int rid1, rid2;
         Assert.assertTrue(list.size() > 0);
         for(Menu m : list) {

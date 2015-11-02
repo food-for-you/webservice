@@ -30,5 +30,5 @@ public interface MenuDao
     int countTotal();
     
     @Transactional(readOnly = true)
-    List<Menu> getByRestaurant(Restaurant r);
+    List<Menu> getMenusByRestaurant(Restaurant r);
 }

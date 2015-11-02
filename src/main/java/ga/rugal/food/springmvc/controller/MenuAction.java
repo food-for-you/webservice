@@ -48,34 +48,26 @@ public class MenuAction
     
     @Autowired
     private RestaurantService restaurantService;
-/*
-    @ResponseBody
-    @RequestMapping(value = "/menu1", method = RequestMethod.GET)
-    public Message randomMenu()
-    {
-        int total = menuService.countTotal();
-        LOG.debug(CommonLogContent.MENU_NUMBER, total);
-        if (0 == total)
-        {
-            LOG.warn(CommonLogContent.NO_MENU);
-            return Message.failMessage(CommonMessageContent.MENU_NOT_FOUND);
-        }
-        Menu menu = (Menu) menuService.getPage(random.nextInt(total), 1).getList().get(0);
-        return Message.successMessage(CommonMessageContent.GET_MENU, menu);
-    }
-*/
+
+    /**
+     * Get menu information through URL /menu
+     * This method is to get a random menu from a menu list associated with specific restaurant
+     * 
+     * @return Give successful message and menu data in JSON format if the menu exist, 
+     * on the contrary, return failed message if menu can't be found
+     */
     @ResponseBody
     @RequestMapping(method = RequestMethod.GET)
     public Message menuByRestaurant() {
   
         Restaurant restaurant = restaurantService.getRandomRestaurant();
-        List<Menu> menuList = menuService.getByRestaurant(restaurant);
+        List<Menu> menuList = menuService.getMenusByRestaurant(restaurant);
         
         if (0 == menuList.size()) {
             LOG.warn(CommonLogContent.NO_MENU);
             return Message.failMessage(CommonMessageContent.MENU_NOT_FOUND);
         }
-        Menu menu = menuService.getRandomMenuByRetaurant(menuList);
+        Menu menu = menuService.getRandomMenuByRetaurant(restaurant);
         return Message.successMessage(CommonMessageContent.GET_MENU, menu);
     }
     
