@@ -30,6 +30,13 @@ public class RestaurantAction
     @Autowired
     private RestaurantService restaurantService;
     
+    /**
+     * Find a restaurant randomly from table
+     * Get restaurant information through URL /restaurant
+     * 
+     * @return Give successful message and restaurant data in JSON format if exists, 
+     * otherwise return failed message
+     */
     @ResponseBody
     @RequestMapping(method = RequestMethod.GET)
     public Message randomRestaurant() {

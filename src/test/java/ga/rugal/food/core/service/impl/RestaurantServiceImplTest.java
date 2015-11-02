@@ -51,29 +51,13 @@ public class RestaurantServiceImplTest extends DBTestBase {
         System.out.println("tearDown");
         menuDao.deleteById(menu.getMid());
         restaurantService.deleteById(restaurant.getRid());
-    }
-    
-    @Test
-    public void testGetMenuByLocation() {
-        System.out.println("get menu by location");
-        Menu menu = restaurantService.getMenuByLocation();
-        Assert.assertNotNull(menu);
-    }   
+    } 
     
     @Test
     public void testGetRandomRestaurant() {
         System.out.println("getRandomRestaurant");
         Restaurant r = restaurantService.getRandomRestaurant();
         Assert.assertNotNull(r);       
-    }
-       
-    @Test
-    public void testGetRandomMenu() {
-        System.out.println("getRandomMenu");
-        List<Menu> listFinal = restaurantService.getMenuList();
-        Menu m = restaurantService.getRandomMenu(listFinal);
-        Assert.assertNotNull(m);
-        Assert.assertTrue(listFinal.size() >= 1);
     }
    
 }

@@ -24,17 +24,16 @@ public interface RestaurantService
     Pagination getPage(int pageNo, int pageSize);
 
     @Transactional(readOnly = true)
-    Menu getMenuByLocation();
-
-    @Transactional(readOnly = true)
     int countTotal();
     
     @Transactional(readOnly = true)
     Restaurant getRandomRestaurant();
     
+    /**
+     * Get all menus from the table
+     * @return Give a list contains all menus
+     */
     @Transactional(readOnly = true)
     List<Menu> getMenuList();
     
-    @Transactional(readOnly = true)
-    Menu getRandomMenu(List<Menu> mList);
 }

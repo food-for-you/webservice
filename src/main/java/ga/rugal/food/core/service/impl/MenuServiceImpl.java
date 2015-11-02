@@ -55,11 +55,17 @@ public class MenuServiceImpl implements MenuService
     }
     
     @Override
+    /**
+     * {@inheritDoc}
+     */
     public List<Menu> getMenusByRestaurant(Restaurant r) {
         return menuDao.getMenusByRestaurant(r);
     }
     
     @Override
+    /**
+     * {@inheritDoc}
+     */
     public Menu getRandomMenuByRetaurant(Restaurant r) {
         Random rd = new Random();
         List<Menu> list = getMenusByRestaurant(r);
