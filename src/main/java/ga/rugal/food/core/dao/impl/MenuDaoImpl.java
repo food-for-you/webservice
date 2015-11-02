@@ -2,6 +2,8 @@ package ga.rugal.food.core.dao.impl;
 
 import ga.rugal.food.core.dao.MenuDao;
 import ga.rugal.food.core.entity.Menu;
+import ga.rugal.food.core.entity.Restaurant;
+import java.util.Random;
 import ml.rugal.sshcommon.hibernate.HibernateBaseDao;
 import ml.rugal.sshcommon.page.Pagination;
 import org.hibernate.Criteria;
@@ -69,6 +71,30 @@ public class MenuDaoImpl extends HibernateBaseDao<Menu, Integer> implements Menu
     protected Class<Menu> getEntityClass()
     {
         return Menu.class;
+    }
+    
+    @Override
+    /**
+     * {@inheritDoc}
+     */
+    @Transactional(readOnly = true)
+    public int countMenusByRestaurant(Restaurant r) {     
+   
+        int count = countByProperty("restaurant", r);        
+        return count;
+        
+    }
+    
+    @Override
+    /**
+     * {@inheritDoc}
+     */
+    @Transactional(readOnly = true)
+    public Menu getRandomMenuByRestaurant(Restaurant r) {
+        Random rd = new Random();
+        int count = countMenusByRestaurant(r);
+        Menu m = findByProperty("restaurant", r).get(rd.nextInt(count));
+        return m;
     }
 
 }
