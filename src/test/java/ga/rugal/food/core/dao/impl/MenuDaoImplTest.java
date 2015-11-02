@@ -79,17 +79,19 @@ public class MenuDaoImplTest extends DBTestBase
     }
     
     @Test
-    public void testgetMenuByRid() {
-        System.out.println("getMenuByRid");
+    public void testCountMenusByRestaurant() {
+        System.out.println("countMenusByRestaurant");
         Restaurant r = menu.getRestaurant();
-        List<Menu> list = menuDao.getMenusByRestaurant(r);  
-        int rid1, rid2;
-        Assert.assertTrue(list.size() > 0);
-        for(Menu m : list) {
-            rid1 = m.getRestaurant().getRid();
-            rid2 = r.getRid();
-            Assert.assertEquals(rid1, rid2);
-        }
+        int count = menuDao.countMenusByRestaurant(r);
+        Assert.assertTrue(count > 0);
+    }
+    
+    @Test
+    public void testGetRandomMenuByRestaurant() {
+        System.out.println("getRandomMenuByRestaurant");
+        Restaurant r = menu.getRestaurant();
+        Menu m = menuDao.getRandomMenuByRestaurant(r);
+        Assert.assertNotNull(m);
                
     }
 }

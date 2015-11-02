@@ -7,7 +7,6 @@ import ga.rugal.food.core.entity.Menu;
 import ga.rugal.food.core.entity.Restaurant;
 import ga.rugal.food.core.service.MenuService;
 import ga.rugal.food.core.service.RestaurantService;
-import java.util.List;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

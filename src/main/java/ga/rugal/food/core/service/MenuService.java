@@ -32,7 +32,7 @@ public interface MenuService
      * @return Give a list with all matched menus
      */
     @Transactional(readOnly = true)
-    List<Menu> getMenusByRestaurant(Restaurant r);
+    int countMenusByRestaurant(Restaurant r);
     
     /**
      * Get a random menu from all menus belong to a specific restaurant

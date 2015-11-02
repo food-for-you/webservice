@@ -3,13 +3,11 @@ package ga.rugal.food.core.dao.impl;
 import ga.rugal.food.core.dao.MenuDao;
 import ga.rugal.food.core.entity.Menu;
 import ga.rugal.food.core.entity.Restaurant;
-import java.util.List;
+import java.util.Random;
 import ml.rugal.sshcommon.hibernate.HibernateBaseDao;
 import ml.rugal.sshcommon.page.Pagination;
 import org.hibernate.Criteria;
-import org.hibernate.criterion.Example;
 import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -80,9 +78,23 @@ public class MenuDaoImpl extends HibernateBaseDao<Menu, Integer> implements Menu
      * {@inheritDoc}
      */
     @Transactional(readOnly = true)
-    public List<Menu> getMenusByRestaurant(Restaurant r) {     
-        List<Menu> list = findByProperty("restaurant", r);
-        return list;
+    public int countMenusByRestaurant(Restaurant r) {     
+   
+        int count = countByProperty("restaurant", r);        
+        return count;
+        
+    }
+    
+    @Override
+    /**
+     * {@inheritDoc}
+     */
+    @Transactional(readOnly = true)
+    public Menu getRandomMenuByRestaurant(Restaurant r) {
+        Random rd = new Random();
+        int count = countMenusByRestaurant(r);
+        Menu m = findByProperty("restaurant", r).get(rd.nextInt(count));
+        return m;
     }
 
 }

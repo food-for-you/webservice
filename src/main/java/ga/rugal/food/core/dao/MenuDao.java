@@ -30,10 +30,19 @@ public interface MenuDao
     int countTotal();
     
     /**
-     * Find the menus which foreign key rid equals to restaurant object r
+     * Count the total number of matched menus with a specific restaurant
      * @param r
-     * @return Give a list of menus
+     * @return Give the number of menus
      */
     @Transactional(readOnly = true)
-    List<Menu> getMenusByRestaurant(Restaurant r);
+    int countMenusByRestaurant(Restaurant r);
+    
+    /**
+     * Get a menu randomly from all matched menus
+     * @param r
+     * @return 
+     */
+    @Transactional(readOnly = true)
+    Menu getRandomMenuByRestaurant(Restaurant r);
+    
 }

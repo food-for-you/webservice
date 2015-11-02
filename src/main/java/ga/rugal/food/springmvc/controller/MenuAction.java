@@ -61,9 +61,9 @@ public class MenuAction
     public Message menuByRestaurant() {
   
         Restaurant restaurant = restaurantService.getRandomRestaurant();
-        List<Menu> menuList = menuService.getMenusByRestaurant(restaurant);
+        int count = menuService.countMenusByRestaurant(restaurant);
         
-        if (0 == menuList.size()) {
+        if (0 == count) {
             LOG.warn(CommonLogContent.NO_MENU);
             return Message.failMessage(CommonMessageContent.MENU_NOT_FOUND);
         }
