@@ -38,13 +38,11 @@ public class RestaurantDaoImpl extends HibernateBaseDao<Restaurant, Integer> imp
         Restaurant entity = get(id);
         return entity;
     }
-
-    /**
-     * Return list of restaurant with matched address.
-     *
-     * @return
-     */
+    
     @Override
+    /**
+     * {@inheritDoc}
+     */
     @Transactional(readOnly = true)
     public List<Restaurant> getWholeList()
     {

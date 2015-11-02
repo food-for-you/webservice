@@ -2,6 +2,7 @@ package ga.rugal.food.core.service.impl;
 
 import ga.rugal.DBTestBase;
 import ga.rugal.food.core.dao.MenuDao;
+import ga.rugal.food.core.dao.RestaurantDao;
 import ga.rugal.food.core.entity.Menu;
 import ga.rugal.food.core.entity.Restaurant;
 import ga.rugal.food.core.service.MenuService;
@@ -10,14 +11,14 @@ import java.util.List;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
 
 /**
  *
  * @author Ying Mi
  */
-public class RestaurantServiceImplTest extends DBTestBase {
+public class MenuServiceImplTest extends DBTestBase{
     
     @Autowired
     private Restaurant restaurant;
@@ -29,19 +30,22 @@ public class RestaurantServiceImplTest extends DBTestBase {
     private MenuDao menuDao;
     
     @Autowired
+    private RestaurantDao restaurantDao;
+    
+    @Autowired
     private RestaurantService restaurantService;
     
     @Autowired
     private MenuService menuService;
     
-    public RestaurantServiceImplTest() {
+    public MenuServiceImplTest() {
     
     }
     
     @Before
     public void setUp() {
         System.out.println("setUp");
-        restaurantService.save(restaurant);
+        restaurantDao.save(restaurant);
         menuDao.save(menu);
         menu.setRestaurant(restaurant);
     }
@@ -50,14 +54,14 @@ public class RestaurantServiceImplTest extends DBTestBase {
     public void tearDown() {
         System.out.println("tearDown");
         menuDao.deleteById(menu.getMid());
-        restaurantService.deleteById(restaurant.getRid());
-    } 
+        restaurantDao.deleteById(restaurant.getRid());
+    }
     
     @Test
-    public void testGetRandomRestaurant() {
-        System.out.println("getRandomRestaurant");
+    public void testGetRandomMenuByRetaurant() {
+        System.out.println("getRandomMenuByRetaurant");
         Restaurant r = restaurantService.getRandomRestaurant();
-        Assert.assertNotNull(r);       
+        Menu m = menuService.getRandomMenuByRetaurant(r);
+        Assert.notNull(m);
     }
-   
 }

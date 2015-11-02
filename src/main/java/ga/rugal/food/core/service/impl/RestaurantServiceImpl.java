@@ -46,16 +46,11 @@ public class RestaurantServiceImpl implements RestaurantService
     {
         return restaurantDao.getPage(pageNo, pageSize);
     }
-
+    
     @Override
-    public Menu getMenuByLocation()
-    {
-
-        List<Menu> mList = getMenuList();
-        Menu menu = getRandomMenu(mList);
-        return menu;
-    }
-
+    /**
+     * {@inheritDoc}
+     */
     public List<Menu> getMenuList()
     {
         List<Restaurant> rList = getWholeList();
@@ -67,18 +62,18 @@ public class RestaurantServiceImpl implements RestaurantService
         return listFinal;
     }
 
-    public Menu getRandomMenu(List<Menu> mList)
-    {
-
-        Random rd = new Random();
-        Menu m = mList.get(rd.nextInt(mList.size()));
-        return m;
-    }
-
     @Override
     @Transactional(readOnly = true)
     public int countTotal()
     {
         return restaurantDao.countTotal();
+    }
+
+    @Override
+    public Restaurant getRandomRestaurant() {
+        Random rd = new Random();
+        int total = countTotal();
+        Restaurant r = (Restaurant) getPage(rd.nextInt(total), 1).getList().get(0);
+        return r;
     }
 }

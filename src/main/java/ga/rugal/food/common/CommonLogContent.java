@@ -18,4 +18,9 @@ public interface CommonLogContent
     final String NO_MENU = "Menu data is empty";
 
     final String MENU_NUMBER = "Count %d menu entry in database";
+    
+    //Restaurant
+    final String RESTAURANT_NUMBER = "Count %d enry in database";
+    
+    final String NO_RESTAURANT = "Restaurant data is empty";
 }

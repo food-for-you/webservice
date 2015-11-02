@@ -1,6 +1,8 @@
 package ga.rugal.food.core.dao;
 
 import ga.rugal.food.core.entity.Menu;
+import ga.rugal.food.core.entity.Restaurant;
+import java.util.List;
 import ml.rugal.sshcommon.hibernate.Updater;
 import ml.rugal.sshcommon.page.Pagination;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,4 +28,12 @@ public interface MenuDao
 
     @Transactional(readOnly = true)
     int countTotal();
+    
+    /**
+     * Find the menus which foreign key rid equals to restaurant object r
+     * @param r
+     * @return Give a list of menus
+     */
+    @Transactional(readOnly = true)
+    List<Menu> getMenusByRestaurant(Restaurant r);
 }
