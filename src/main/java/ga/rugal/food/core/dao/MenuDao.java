@@ -1,6 +1,8 @@
 package ga.rugal.food.core.dao;
 
 import ga.rugal.food.core.entity.Menu;
+import ga.rugal.food.core.entity.Restaurant;
+import java.util.List;
 import ml.rugal.sshcommon.hibernate.Updater;
 import ml.rugal.sshcommon.page.Pagination;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,4 +28,7 @@ public interface MenuDao
 
     @Transactional(readOnly = true)
     int countTotal();
+    
+    @Transactional(readOnly = true)
+    List<Menu> getByRestaurant(Restaurant r);
 }

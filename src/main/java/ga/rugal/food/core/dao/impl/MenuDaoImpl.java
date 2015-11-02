@@ -2,10 +2,14 @@ package ga.rugal.food.core.dao.impl;
 
 import ga.rugal.food.core.dao.MenuDao;
 import ga.rugal.food.core.entity.Menu;
+import ga.rugal.food.core.entity.Restaurant;
+import java.util.List;
 import ml.rugal.sshcommon.hibernate.HibernateBaseDao;
 import ml.rugal.sshcommon.page.Pagination;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Example;
 import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -69,6 +73,13 @@ public class MenuDaoImpl extends HibernateBaseDao<Menu, Integer> implements Menu
     protected Class<Menu> getEntityClass()
     {
         return Menu.class;
+    }
+    
+    @Override
+    @Transactional(readOnly = true)
+    public List<Menu> getByRestaurant(Restaurant r) {     
+        List<Menu> list = findByProperty("restaurant", r);
+        return list;
     }
 
 }

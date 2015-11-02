@@ -1,6 +1,8 @@
 package ga.rugal.food.core.service;
 
 import ga.rugal.food.core.entity.Menu;
+import ga.rugal.food.core.entity.Restaurant;
+import java.util.List;
 import ml.rugal.sshcommon.page.Pagination;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,5 +25,11 @@ public interface MenuService
 
     @Transactional(readOnly = true)
     Menu getByID(Integer id);
+    
+    @Transactional(readOnly = true)
+    List<Menu> getByRestaurant(Restaurant r);
+    
+    @Transactional(readOnly = true)
+    Menu getRandomMenuByRetaurant(List<Menu> list);
 
 }

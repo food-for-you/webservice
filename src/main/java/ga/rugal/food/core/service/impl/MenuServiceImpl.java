@@ -2,7 +2,10 @@ package ga.rugal.food.core.service.impl;
 
 import ga.rugal.food.core.dao.MenuDao;
 import ga.rugal.food.core.entity.Menu;
+import ga.rugal.food.core.entity.Restaurant;
 import ga.rugal.food.core.service.MenuService;
+import java.util.List;
+import java.util.Random;
 import ml.rugal.sshcommon.page.Pagination;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,6 +52,18 @@ public class MenuServiceImpl implements MenuService
     public Menu deleteById(Integer id)
     {
         return menuDao.deleteById(id);
+    }
+    
+    @Override
+    public List<Menu> getByRestaurant(Restaurant r) {
+        return menuDao.getByRestaurant(r);
+    }
+    
+    @Override
+    public Menu getRandomMenuByRetaurant(List<Menu> list) {
+        Random rd = new Random();
+        Menu m = list.get(rd.nextInt(list.size()));
+        return m;
     }
 
 }

@@ -5,6 +5,7 @@ import ga.rugal.food.core.dao.MenuDao;
 import ga.rugal.food.core.dao.RestaurantDao;
 import ga.rugal.food.core.entity.Menu;
 import ga.rugal.food.core.entity.Restaurant;
+import java.util.List;
 import ml.rugal.sshcommon.page.Pagination;
 import org.junit.After;
 import org.junit.Assert;
@@ -75,5 +76,20 @@ public class MenuDaoImplTest extends DBTestBase
         System.out.println("countTotal");
         int count = menuDao.countTotal();
         Assert.assertTrue(count > 0);
+    }
+    
+    @Test
+    public void testgetMenuByRid() {
+        System.out.println("getMenuByRid");
+        Restaurant r = menu.getRestaurant();
+        List<Menu> list = menuDao.getByRestaurant(r);  
+        int rid1, rid2;
+        Assert.assertTrue(list.size() > 0);
+        for(Menu m : list) {
+            rid1 = m.getRestaurant().getRid();
+            rid2 = r.getRid();
+            Assert.assertEquals(rid1, rid2);
+        }
+               
     }
 }

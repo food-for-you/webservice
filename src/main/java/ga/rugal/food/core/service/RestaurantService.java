@@ -28,4 +28,13 @@ public interface RestaurantService
 
     @Transactional(readOnly = true)
     int countTotal();
+    
+    @Transactional(readOnly = true)
+    Restaurant getRandomRestaurant();
+    
+    @Transactional(readOnly = true)
+    List<Menu> getMenuList();
+    
+    @Transactional(readOnly = true)
+    Menu getRandomMenu(List<Menu> mList);
 }
