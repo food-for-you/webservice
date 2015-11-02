@@ -22,6 +22,9 @@ public class RestaurantServiceImpl implements RestaurantService
 
     @Autowired
     private RestaurantDao restaurantDao;
+    
+    //@Autowired
+    //private RestaurantService restaurantService;
 
     @Override
     public Restaurant save(Restaurant bean)
@@ -55,7 +58,8 @@ public class RestaurantServiceImpl implements RestaurantService
         Menu menu = getRandomMenu(mList);
         return menu;
     }
-
+    
+    @Override
     public List<Menu> getMenuList()
     {
         List<Restaurant> rList = getWholeList();
@@ -66,7 +70,8 @@ public class RestaurantServiceImpl implements RestaurantService
         });
         return listFinal;
     }
-
+    
+    @Override
     public Menu getRandomMenu(List<Menu> mList)
     {
 
@@ -80,5 +85,13 @@ public class RestaurantServiceImpl implements RestaurantService
     public int countTotal()
     {
         return restaurantDao.countTotal();
+    }
+
+    @Override
+    public Restaurant getRandomRestaurant() {
+        Random rd = new Random();
+        int total = countTotal();
+        Restaurant r = (Restaurant) getPage(rd.nextInt(total), 1).getList().get(0);
+        return r;
     }
 }
