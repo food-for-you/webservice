@@ -27,9 +27,9 @@ public interface MenuService
     Menu getByID(Integer id);
     
     /**
-     * Find all menus that belong to a specific restaurant
+     * Count the number of menus that belong to a specific restaurant
      * @param r
-     * @return Give a list with all matched menus
+     * @return Give the number of menus
      */
     @Transactional(readOnly = true)
     int countMenusByRestaurant(Restaurant r);
