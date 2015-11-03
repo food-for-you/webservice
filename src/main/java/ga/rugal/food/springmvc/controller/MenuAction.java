@@ -9,7 +9,6 @@ import ga.rugal.food.core.service.MenuService;
 import ga.rugal.food.core.service.RestaurantService;
 import java.io.File;
 import java.io.IOException;
-import java.util.Random;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 import ml.rugal.sshcommon.springmvc.util.Message;

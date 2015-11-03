@@ -1,5 +1,6 @@
 package ga.rugal.food.core.dao.impl;
 
+import ga.rugal.food.common.CommonLogContent;
 import ga.rugal.food.core.dao.MenuDao;
 import ga.rugal.food.core.entity.Menu;
 import ga.rugal.food.core.entity.Restaurant;
@@ -97,6 +98,10 @@ public class MenuDaoImpl extends HibernateBaseDao<Menu, Integer> implements Menu
     public Menu getRandomMenuByRestaurant(Restaurant r) {
        
         int count = countMenusByRestaurant(r);
+        if(0 == count) {
+            LOG.info(CommonLogContent.NO_MENU);
+            return null;
+        }
         Menu m = findByProperty("restaurant", r).get(random.nextInt(count));
         return m;
     }
