@@ -52,8 +52,6 @@ public class ApplicationContext
     public static final String hibernate_dialect = "hibernate.dialect";
 
     public static final String package_to_scan = PackageInfo.class.getPackage().getName();
-    
-    public final Random rd = new Random();
 
     @Autowired
     private Environment env;
