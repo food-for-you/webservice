@@ -22,6 +22,9 @@ public class RestaurantServiceImpl implements RestaurantService
 
     @Autowired
     private RestaurantDao restaurantDao;
+    
+    @Autowired
+    private Random random;
 
     @Override
     public Restaurant save(Restaurant bean)
@@ -71,9 +74,9 @@ public class RestaurantServiceImpl implements RestaurantService
 
     @Override
     public Restaurant getRandomRestaurant() {
-        Random rd = new Random();
+      
         int total = countTotal();
-        Restaurant r = (Restaurant) getPage(rd.nextInt(total), 1).getList().get(0);
+        Restaurant r = (Restaurant) getPage(random.nextInt(total), 1).getList().get(0);
         return r;
     }
 }

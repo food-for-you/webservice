@@ -10,6 +10,7 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Projections;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,6 +24,9 @@ public class MenuDaoImpl extends HibernateBaseDao<Menu, Integer> implements Menu
 
     private static final Logger LOG = LoggerFactory.getLogger(MenuDaoImpl.class.getName());
 
+    @Autowired
+    private Random random;
+    
     @Override
     @Transactional(readOnly = true)
     public Pagination getPage(int pageNo, int pageSize)
@@ -91,9 +95,9 @@ public class MenuDaoImpl extends HibernateBaseDao<Menu, Integer> implements Menu
      */
     @Transactional(readOnly = true)
     public Menu getRandomMenuByRestaurant(Restaurant r) {
-        Random rd = new Random();
+       
         int count = countMenusByRestaurant(r);
-        Menu m = findByProperty("restaurant", r).get(rd.nextInt(count));
+        Menu m = findByProperty("restaurant", r).get(random.nextInt(count));
         return m;
     }
 

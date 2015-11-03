@@ -9,7 +9,6 @@ import ga.rugal.food.core.service.MenuService;
 import ga.rugal.food.core.service.RestaurantService;
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 import java.util.Random;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
@@ -40,8 +39,6 @@ public class MenuAction
 
     @Autowired
     private ServletContext context;
-
-    private final Random random = new Random();
 
     @Autowired
     private MenuService menuService;

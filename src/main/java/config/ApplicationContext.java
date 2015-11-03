@@ -3,6 +3,7 @@ package config;
 import com.zaxxer.hikari.HikariDataSource;
 import ga.rugal.food.core.entity.PackageInfo;
 import java.util.Properties;
+import java.util.Random;
 import javax.sql.DataSource;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -51,6 +52,8 @@ public class ApplicationContext
     public static final String hibernate_dialect = "hibernate.dialect";
 
     public static final String package_to_scan = PackageInfo.class.getPackage().getName();
+    
+    public final Random rd = new Random();
 
     @Autowired
     private Environment env;
@@ -110,4 +113,10 @@ public class ApplicationContext
     }
 //</editor-fold>
 
+//<editor-fold defaultstate="collapsed" desc="Creat random object">    
+    @Bean
+    public Random random() {
+        return new Random();
+    }
 }
+//</editor-fold>

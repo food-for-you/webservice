@@ -25,10 +25,11 @@ public class RestaurantAction
     
     private static final Logger LOG = LoggerFactory.getLogger(RestaurantAction.class.getName());
 
-    private final Random rd = new Random();
-
     @Autowired
     private RestaurantService restaurantService;
+    
+    @Autowired
+    private Random random;
     
     /**
      * Find a restaurant randomly from table
@@ -46,7 +47,7 @@ public class RestaurantAction
             LOG.warn(CommonLogContent.NO_RESTAURANT);
             return Message.failMessage(CommonMessageContent.RESTAURANT_NOT_FOUND);
         }
-        Restaurant restaurant = (Restaurant) restaurantService.getPage(rd.nextInt(total), 1).getList().get(0);
+        Restaurant restaurant = (Restaurant) restaurantService.getPage(random.nextInt(total), 1).getList().get(0);
         return Message.successMessage(CommonMessageContent.GET_RESTAURANT, restaurant);
     }
     
