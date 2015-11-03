@@ -21,26 +21,24 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  *
  * @author Ying Mi
  */
-public class MenuActionTest extends ControllerClientSideTestBase
+public class RestaurantActionTest extends ControllerClientSideTestBase
 {
-
-    public MenuActionTest()
-    {
-
+    public RestaurantActionTest() {
+        
     }
-
+    
     @Autowired
+    private RestaurantService restaurantService;
+    
+     @Autowired
     private Restaurant restaurant;
 
     @Autowired
-    private Menu menu;
-
-    @Autowired
     private MenuService menuService;
-
+    
     @Autowired
-    private RestaurantService restaurantService;
-
+    private Menu menu;
+    
     @Before
     public void setUp()
     {
@@ -56,12 +54,11 @@ public class MenuActionTest extends ControllerClientSideTestBase
         menuService.deleteById(menu.getMid());
         restaurantService.deleteById(restaurant.getRid());
     }
-
+    
     @Test
-    public void testMenuByRestaurant() throws Exception
-    {
-        System.out.println("menuByRestaurant");
-        MvcResult result = this.mockMvc.perform(get("/menu")
+    public void testRandomRestaurant() throws Exception {
+        System.out.println("randomRestaurant");
+        MvcResult result = this.mockMvc.perform(get("/restaurant")
             .accept(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(status().isOk())
             .andDo(print())
@@ -69,29 +66,5 @@ public class MenuActionTest extends ControllerClientSideTestBase
         Message message = GSON.fromJson(result.getResponse().getContentAsString(), Message.class);
         Menu getFromDB = menu.backToObject(message.getData());
         Assert.assertNotNull(getFromDB);
-    }
-    
-    @Test
-    public void testGetImage() throws Exception
-    {
-        System.out.println("getImage");
-        this.mockMvc.perform(get(String.format("/menu/%d/image", menu.getMid()))
-            .accept(MediaType.IMAGE_GIF_VALUE, MediaType.IMAGE_JPEG_VALUE,
-                    MediaType.IMAGE_PNG_VALUE, MediaType.APPLICATION_JSON_VALUE
-            ))
-            .andExpect(status().isOk())
-            .andDo(print());
-    }
-
-    @Test
-    public void testGetMissedImage() throws Exception
-    {
-        System.out.println("getMissedImage");
-        this.mockMvc.perform(get(String.format("/menu/%d/image", 0))
-            .accept(MediaType.IMAGE_GIF_VALUE, MediaType.IMAGE_JPEG_VALUE,
-                    MediaType.IMAGE_PNG_VALUE, MediaType.APPLICATION_JSON_VALUE
-            ))
-            .andExpect(status().isOk())
-            .andDo(print());
     }
 }
