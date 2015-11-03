@@ -84,11 +84,11 @@ public class MenuDaoImpl extends HibernateBaseDao<Menu, Integer> implements Menu
      */
     @Transactional(readOnly = true)
     public int countMenusByRestaurant(Restaurant r) {     
-        int count;
-        if(null == r) {
-           count = 0; 
-        }
-        count = countByProperty("restaurant", r);        
+        
+        int count = 0;
+        if(null != r) {
+          count = countByProperty("restaurant", r);
+        }               
         return count;
         
     }
