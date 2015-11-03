@@ -40,7 +40,8 @@ public interface MenuDao
     /**
      * Get a menu randomly from all matched menus
      * @param r
-     * @return 
+     * @return Give the number of menus corresponding to the specific restaurant
+     * if the restaurant exist, otherwise return 0 as the count number.
      */
     @Transactional(readOnly = true)
     Menu getRandomMenuByRestaurant(Restaurant r);

@@ -47,10 +47,10 @@ public class MenuAction
 
     /**
      * Get menu information through URL /menu
-     * This method is to get a random menu from a menu list associated with specific restaurant
+     * This method is to get a random menu which is correspond to a specific restaurant
      * 
      * @return Give successful message and menu data in JSON format if the menu exist, 
-     * on the contrary, return failed message if menu can't be found
+     * on the contrary, return failed message
      */
     @ResponseBody
     @RequestMapping(method = RequestMethod.GET)
