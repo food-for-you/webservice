@@ -64,11 +64,20 @@ public class RestaurantDaoImplTest extends DBTestBase
     public void testGetWholeList() {
         
         System.out.println("getWholeList");
-        //String address = "Rankin";
         List <Restaurant> list = restaurantDao.getWholeList();
         Assert.assertNotNull(list);
         Assert.assertFalse(list.isEmpty());
-        Assert.assertTrue(list.size() > 0);
-        
+        Assert.assertTrue(list.size() > 0);       
+    }
+    
+    @Test
+    public void testCountAll() {
+        System.out.println("countAll");
+        List <Restaurant> list = restaurantDao.getWholeList();
+        int number1 = list.size();
+        int number2 = restaurantDao.countTotal();
+        Assert.assertTrue(number2 > 0);
+        Assert.assertTrue(number1 == number2 );
+        System.out.println("number2");
     }
 }

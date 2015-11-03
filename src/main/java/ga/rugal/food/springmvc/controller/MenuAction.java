@@ -4,10 +4,11 @@ import config.SystemDefaultProperties;
 import ga.rugal.food.common.CommonLogContent;
 import ga.rugal.food.common.CommonMessageContent;
 import ga.rugal.food.core.entity.Menu;
+import ga.rugal.food.core.entity.Restaurant;
 import ga.rugal.food.core.service.MenuService;
+import ga.rugal.food.core.service.RestaurantService;
 import java.io.File;
 import java.io.IOException;
-import java.util.Random;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 import ml.rugal.sshcommon.springmvc.util.Message;
@@ -38,26 +39,34 @@ public class MenuAction
     @Autowired
     private ServletContext context;
 
-    private final Random random = new Random();
-
     @Autowired
     private MenuService menuService;
+    
+    @Autowired
+    private RestaurantService restaurantService;
 
+    /**
+     * Get menu information through URL /menu
+     * This method is to get a random menu which is correspond to a specific restaurant
+     * 
+     * @return Give successful message and menu data in JSON format if the menu exist, 
+     * on the contrary, return failed message
+     */
     @ResponseBody
     @RequestMapping(method = RequestMethod.GET)
-    public Message randomMenu()
-    {
-        int total = menuService.countTotal();
-        LOG.debug(CommonLogContent.MENU_NUMBER, total);
-        if (0 == total)
-        {
+    public Message menuByRestaurant() {
+  
+        Restaurant restaurant = restaurantService.getRandomRestaurant();
+        int count = menuService.countMenusByRestaurant(restaurant);
+        
+        if (0 == count) {
             LOG.warn(CommonLogContent.NO_MENU);
             return Message.failMessage(CommonMessageContent.MENU_NOT_FOUND);
         }
-        Menu menu = (Menu) menuService.getPage(random.nextInt(total), 1).getList().get(0);
+        Menu menu = menuService.getRandomMenuByRetaurant(restaurant);
         return Message.successMessage(CommonMessageContent.GET_MENU, menu);
     }
-
+    
     /**
      * GET image by the request menu id.
      * We will return a default picture if no image found or path not accessible for reading.<BR>
