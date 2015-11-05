@@ -11,6 +11,7 @@ import ga.rugal.food.core.entity.Menu;
 import ga.rugal.food.core.entity.Restaurant;
 import ga.rugal.food.core.entity.Tag;
 import ga.rugal.food.core.entity.Tagging;
+import java.util.List;
 import ml.rugal.sshcommon.page.Pagination;
 import org.junit.After;
 import org.junit.Assert;
@@ -97,6 +98,14 @@ public class TaggingDaoImplTest extends DBTestBase
         System.out.println("getByID");
         Long id = tagging.getGid();
         Assert.assertNotNull(taggingDao.getByID(id));
+    }
+
+    @Test
+    public void testFindByMealTypeFromRestaurant()
+    {
+        System.out.println("findByMealTypeFromRestaurant");
+        List<Tagging> list = taggingDao.findByMealTypeFromRestaurant(tag, restaurant);
+        Assert.assertEquals(1, list.size());
     }
 
 }

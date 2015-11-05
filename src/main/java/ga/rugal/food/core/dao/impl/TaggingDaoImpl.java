@@ -1,7 +1,11 @@
 package ga.rugal.food.core.dao.impl;
 
 import ga.rugal.food.core.dao.TaggingDao;
+import ga.rugal.food.core.entity.Restaurant;
+import ga.rugal.food.core.entity.Tag;
 import ga.rugal.food.core.entity.Tagging;
+import java.util.List;
+import ml.rugal.sshcommon.hibernate.Finder;
 import ml.rugal.sshcommon.hibernate.HibernateBaseDao;
 import ml.rugal.sshcommon.page.Pagination;
 import org.hibernate.Criteria;
@@ -35,6 +39,18 @@ public class TaggingDaoImpl extends HibernateBaseDao<Tagging, Long> implements T
     {
         Tagging entity = get(id);
         return entity;
+    }
+
+//select * from tagging where tid = (select tid from tag where name = 'lunch' ) and mid in (select mid from menu where rid = (select rid from restaurant where rid = 1));
+    @Override
+    @Transactional(readOnly = true)
+    public List<Tagging> findByMealTypeFromRestaurant(Tag tag, Restaurant restaurant)
+    {
+        Finder f = Finder.create("FROM Tagging bean WHERE bean.tag=:tag AND bean.menu in (SELECT m FROM Menu m WHERE m.restaurant=:restaurant)");
+        f.setParam("tag", tag);
+        f.setParam("restaurant", restaurant);
+        List<Tagging> list = find(f);
+        return list;
     }
 
     @Override
