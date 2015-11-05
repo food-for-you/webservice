@@ -28,9 +28,11 @@
 3. Software design: Being done by Rugal and Michelle
 3. Refactorize random recommendation code: Being done by Rugal
 4. Frontend: AngularJS
-5. DB import: Done by Rugal
 6. Interface design: Done by whole team
 7. SKeleton code based on [archetype](http://search.maven.org/#artifactdetails%7Cml.rugal.archetype%7Cspringmvc-spring-hibernate%7C0.6%7Cmaven-archetype), Done by Rugal
-
+8. Travis-ci, codeship, circleci deployment: Done by Rugal
+9. Heroku continuous deployment: Done by Rugal
+10. Database updating for Inception features: Done by Rugal
+11. Database updating for elaboration I features: Being done by rugal
 
 ##Iteration II
