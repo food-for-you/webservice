@@ -4,12 +4,18 @@ import ga.rugal.food.common.CommonLogContent;
 import ga.rugal.food.core.dao.MenuDao;
 import ga.rugal.food.core.entity.Menu;
 import ga.rugal.food.core.entity.Restaurant;
+import ga.rugal.food.core.entity.Tag;
+import ga.rugal.food.core.entity.Tagging;
 import java.util.List;
 import java.util.Random;
 import ml.rugal.sshcommon.hibernate.HibernateBaseDao;
 import ml.rugal.sshcommon.page.Pagination;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Property;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.criterion.Subqueries;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -119,6 +125,31 @@ public class MenuDaoImpl extends HibernateBaseDao<Menu, Integer> implements Menu
     {
         List<Menu> list = this.findByProperty("restaurant", r);
         return list;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    @Transactional(readOnly = true)
+    public List<Menu> findByTagAndRestaurant(Tag tag, Restaurant restaurant)
+    {    //SELECT * FROM menu WHERE mid =
+        //ANY(ARRAY(SELECT mid FROM tagging WHERE tid = 1 AND mid = ANY(ARRAY (SELECT mid FROM menu WHERE rid = 1))));
+        //Subquery for menus that from given restaurant
+        DetachedCriteria subquery1 = DetachedCriteria.forClass(Menu.class);
+        subquery1.add(Restrictions.eq("restaurant", restaurant));
+        subquery1.setProjection(Property.forName("mid"));
+
+        //Subquery for menu that meet target tag and from target restaurant
+        DetachedCriteria subquery2 = DetachedCriteria.forClass(Tagging.class);
+        subquery2.add(Restrictions.eq("tag", tag));
+        subquery2.add(Subqueries.propertyIn("menu.mid", subquery1));
+        subquery2.setProjection(Property.forName("menu.mid"));
+
+        //Get menu list
+        Criteria crit = createCriteria();
+        crit.add(Subqueries.propertyIn("mid", subquery2));
+        return crit.list();
     }
 
 }
