@@ -1,14 +1,16 @@
 package ga.rugal.food.core.dao.impl;
 
 import ga.rugal.food.core.dao.TaggingDao;
+import ga.rugal.food.core.entity.Client;
+import ga.rugal.food.core.entity.Menu;
 import ga.rugal.food.core.entity.Restaurant;
 import ga.rugal.food.core.entity.Tag;
 import ga.rugal.food.core.entity.Tagging;
 import java.util.List;
-import ml.rugal.sshcommon.hibernate.Finder;
 import ml.rugal.sshcommon.hibernate.HibernateBaseDao;
 import ml.rugal.sshcommon.page.Pagination;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -41,16 +43,60 @@ public class TaggingDaoImpl extends HibernateBaseDao<Tagging, Long> implements T
         return entity;
     }
 
-//select * from tagging where tid = (select tid from tag where name = 'lunch' ) and mid in (select mid from menu where rid = (select rid from restaurant where rid = 1));
     @Override
     @Transactional(readOnly = true)
-    public List<Tagging> findByMealTypeFromRestaurant(Tag tag, Restaurant restaurant)
+    public List<Tagging> findByTagAndRestaurant(Tag tag, Restaurant restaurant)
     {
-        Finder f = Finder.create("FROM Tagging bean WHERE bean.tag=:tag AND bean.menu in (SELECT m FROM Menu m WHERE m.restaurant=:restaurant)");
-        f.setParam("tag", tag);
-        f.setParam("restaurant", restaurant);
-        List<Tagging> list = find(f);
-        return list;
+        Criteria crit = createCriteria();
+        crit.add(Restrictions.eq("tag", tag));
+        crit.add(Restrictions.eq("restaurant", restaurant));
+        return crit.list();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Tagging> findByTagAndMenu(Tag tag, Menu menu)
+    {
+        Criteria crit = createCriteria();
+        crit.add(Restrictions.eq("tag", tag));
+        crit.add(Restrictions.eq("menu", menu));
+        return crit.list();
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<Tagging> findByMenu(Menu menu)
+    {
+        Criteria crit = createCriteria();
+        crit.add(Restrictions.eq("menu", menu));
+        return crit.list();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Tagging> findByClient(Client client)
+    {
+        Criteria crit = createCriteria();
+        crit.add(Restrictions.eq("client", client));
+        return crit.list();
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<Tagging> findByRestaurant(Restaurant restaurant)
+    {
+        Criteria crit = createCriteria();
+        crit.add(Restrictions.eq("restaurant", restaurant));
+        return crit.list();
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<Tagging> findByTag(Tag tag)
+    {
+        Criteria crit = createCriteria();
+        crit.add(Restrictions.eq("tag", tag));
+        return crit.list();
     }
 
     @Override

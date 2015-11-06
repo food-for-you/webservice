@@ -101,11 +101,51 @@ public class TaggingDaoImplTest extends DBTestBase
     }
 
     @Test
-    public void testFindByMealTypeFromRestaurant()
+    public void testFindByTagAndRestaurant()
     {
-        System.out.println("findByMealTypeFromRestaurant");
-        List<Tagging> list = taggingDao.findByMealTypeFromRestaurant(tag, restaurant);
-        Assert.assertEquals(1, list.size());
+        System.out.println("findByTagAndRestaurant");
+        List<Tagging> result = taggingDao.findByTagAndRestaurant(tag, restaurant);
+        Assert.assertEquals(1, result.size());
+    }
+
+    @Test
+    public void testFindByTagAndMenu()
+    {
+        System.out.println("findByTagAndMenu");
+        List<Tagging> result = taggingDao.findByTagAndMenu(tag, menu);
+        Assert.assertEquals(1, result.size());
+    }
+
+    @Test
+    public void testFindByMenu()
+    {
+        System.out.println("findByMenu");
+        List<Tagging> result = taggingDao.findByMenu(menu);
+        Assert.assertEquals(1, result.size());
+    }
+
+    @Test
+    public void testFindByClient()
+    {
+        System.out.println("findByClient");
+        List<Tagging> result = taggingDao.findByClient(client);
+        Assert.assertEquals(1, result.size());
+    }
+
+    @Test
+    public void testFindByRestaurant()
+    {
+        System.out.println("findByRestaurant");
+        List<Tagging> result = taggingDao.findByRestaurant(restaurant);
+        Assert.assertEquals(1, result.size());
+    }
+
+    @Test
+    public void testFindByTag()
+    {
+        System.out.println("findByTag");
+        List<Tagging> result = taggingDao.findByTag(tag);
+        Assert.assertEquals(1, result.size());
     }
 
 }

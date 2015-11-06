@@ -1,5 +1,7 @@
 package ga.rugal.food.core.dao;
 
+import ga.rugal.food.core.entity.Client;
+import ga.rugal.food.core.entity.Menu;
 import ga.rugal.food.core.entity.Restaurant;
 import ga.rugal.food.core.entity.Tag;
 import ga.rugal.food.core.entity.Tagging;
@@ -27,6 +29,29 @@ public interface TaggingDao
 
     Tagging updateByUpdater(Updater<Tagging> updater);
 
+    /**
+     * Find taggings that matched given tag and restaurant.
+     *
+     * @param tag
+     * @param restaurant
+     *
+     * @return
+     */
     @Transactional(readOnly = true)
-    List<Tagging> findByMealTypeFromRestaurant(Tag tag, Restaurant restaurant);
+    List<Tagging> findByTagAndRestaurant(Tag tag, Restaurant restaurant);
+
+    @Transactional(readOnly = true)
+    List<Tagging> findByMenu(Menu menu);
+
+    @Transactional(readOnly = true)
+    List<Tagging> findByRestaurant(Restaurant restaurant);
+
+    @Transactional(readOnly = true)
+    List<Tagging> findByTag(Tag tag);
+
+    @Transactional(readOnly = true)
+    List<Tagging> findByClient(Client client);
+
+    @Transactional(readOnly = true)
+    List<Tagging> findByTagAndMenu(Tag tag, Menu menu);
 }

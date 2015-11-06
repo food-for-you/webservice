@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 /**
  *
@@ -37,18 +39,22 @@ public class Tagging
 
     @JoinColumn(name = "mid", referencedColumnName = "mid")
     @ManyToOne
+    @Fetch(FetchMode.SELECT)
     private Menu menu;
 
     @JoinColumn(name = "rid", referencedColumnName = "rid")
     @ManyToOne
+    @Fetch(FetchMode.SELECT)
     private Restaurant restaurant;
 
     @JoinColumn(name = "cid", referencedColumnName = "cid")
     @ManyToOne
+    @Fetch(FetchMode.SELECT)
     private Client client;
 
     @JoinColumn(name = "tid", referencedColumnName = "tid")
     @ManyToOne
+    @Fetch(FetchMode.SELECT)
     private Tag tag;
 
     public Tagging()
