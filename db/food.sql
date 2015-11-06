@@ -249,7 +249,7 @@ COPY client (cid, name, credential, email, phone) FROM stdin;
 -- Name: client_cid_seq; Type: SEQUENCE SET; Schema: food; Owner: postgres
 --
 
-SELECT pg_catalog.setval('client_cid_seq', 151, true);
+SELECT pg_catalog.setval('client_cid_seq', 253, true);
 
 
 --
@@ -290,7 +290,7 @@ COPY menu (mid, name, price, rid, image) FROM stdin;
 -- Name: menu_mid_seq; Type: SEQUENCE SET; Schema: food; Owner: postgres
 --
 
-SELECT pg_catalog.setval('menu_mid_seq', 236, true);
+SELECT pg_catalog.setval('menu_mid_seq', 388, true);
 
 
 --
@@ -308,7 +308,7 @@ COPY restaurant (rid, name, address, phone, postalcode) FROM stdin;
 -- Name: restaurant_rid_seq; Type: SEQUENCE SET; Schema: food; Owner: postgres
 --
 
-SELECT pg_catalog.setval('restaurant_rid_seq', 302, true);
+SELECT pg_catalog.setval('restaurant_rid_seq', 474, true);
 
 
 --
@@ -316,6 +316,9 @@ SELECT pg_catalog.setval('restaurant_rid_seq', 302, true);
 --
 
 COPY tag (tid, name) FROM stdin;
+1	breakfast
+2	lunch
+3	dinner
 \.
 
 
@@ -323,7 +326,7 @@ COPY tag (tid, name) FROM stdin;
 -- Name: tag_tid_seq; Type: SEQUENCE SET; Schema: food; Owner: postgres
 --
 
-SELECT pg_catalog.setval('tag_tid_seq', 172, true);
+SELECT pg_catalog.setval('tag_tid_seq', 310, true);
 
 
 --
@@ -331,6 +334,32 @@ SELECT pg_catalog.setval('tag_tid_seq', 172, true);
 --
 
 COPY tagging (gid, tid, mid, rid, weight, cid) FROM stdin;
+28	1	35	\N	0	\N
+29	1	36	\N	0	\N
+30	1	37	\N	0	\N
+31	1	44	\N	0	\N
+32	1	45	\N	0	\N
+33	1	51	\N	0	\N
+34	1	52	\N	0	\N
+35	1	53	\N	0	\N
+36	2	38	\N	0	\N
+37	2	39	\N	0	\N
+38	2	46	\N	0	\N
+39	2	47	\N	0	\N
+40	2	54	\N	0	\N
+41	2	55	\N	0	\N
+42	3	40	\N	0	\N
+43	3	41	\N	0	\N
+44	3	42	\N	0	\N
+45	3	43	\N	0	\N
+46	3	48	\N	0	\N
+47	3	49	\N	0	\N
+48	3	50	\N	0	\N
+49	3	56	\N	0	\N
+50	3	57	\N	0	\N
+51	3	58	\N	0	\N
+52	3	59	\N	0	\N
+53	3	60	\N	0	\N
 \.
 
 
@@ -338,7 +367,7 @@ COPY tagging (gid, tid, mid, rid, weight, cid) FROM stdin;
 -- Name: tagging_gid_seq; Type: SEQUENCE SET; Schema: food; Owner: postgres
 --
 
-SELECT pg_catalog.setval('tagging_gid_seq', 68, true);
+SELECT pg_catalog.setval('tagging_gid_seq', 177, true);
 
 
 --
@@ -424,3 +453,4 @@ ALTER TABLE ONLY tagging
 --
 -- PostgreSQL database dump complete
 --
+
