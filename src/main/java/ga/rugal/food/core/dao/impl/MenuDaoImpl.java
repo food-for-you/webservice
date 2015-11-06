@@ -132,13 +132,49 @@ public class MenuDaoImpl extends HibernateBaseDao<Menu, Integer> implements Menu
      */
     @Override
     @Transactional(readOnly = true)
-    public List<Menu> findByTagAndRestaurant(Tag tag, Restaurant restaurant)
-    {    //SELECT * FROM menu WHERE mid =
-        //ANY(ARRAY(SELECT mid FROM tagging WHERE tid = 1 AND mid = ANY(ARRAY (SELECT mid FROM menu WHERE rid = 1))));
+    public Menu getRandomMenuByTagAndRestaurant(Tag tag, Restaurant restaurant)
+    {
+        //This method will not validate input parameters
+        int count = countByTagAndRestaurant(tag, restaurant);
+        if (0 == count)
+        {
+            LOG.info(CommonLogContent.NO_MENU);
+            return null;
+        }
+        Criteria crit = this.searchByTagAndRestaurant(tag, restaurant);
+        return (Menu) findByCriteria(crit, random.nextInt(count), 1).getList().get(0);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    @Transactional(readOnly = true)
+    public int countByTagAndRestaurant(Tag tag, Restaurant restaurant)
+    {
+        Criteria crit = this.searchByTagAndRestaurant(tag, restaurant);
+        crit.setProjection(Projections.count(Projections.id().toString()));
+        return ((Number) crit.list().get(0)).intValue();
+    }
+
+    /**
+     * Private method that wrap common SQL together.<BR>
+     * This SQL could be optimized by using inner join, but doing this will uglify Hibernate's
+     * structure.<BR>
+     * SELECT * FROM menu WHERE mid =ANY(ARRAY(SELECT mid FROM tagging WHERE tid = 1 AND mid =
+     * ANY(ARRAY (SELECT mid FROM menu WHERE rid = 1))));
+     *
+     * @param tag
+     * @param restaurant
+     *
+     * @return
+     */
+    private Criteria searchByTagAndRestaurant(Tag tag, Restaurant restaurant)
+    {
         //Subquery for menus that from given restaurant
         DetachedCriteria subquery1 = DetachedCriteria.forClass(Menu.class);
         subquery1.add(Restrictions.eq("restaurant", restaurant));
-        subquery1.setProjection(Property.forName("mid"));
+        subquery1.setProjection(Projections.id());
 
         //Subquery for menu that meet target tag and from target restaurant
         DetachedCriteria subquery2 = DetachedCriteria.forClass(Tagging.class);
@@ -149,7 +185,7 @@ public class MenuDaoImpl extends HibernateBaseDao<Menu, Integer> implements Menu
         //Get menu list
         Criteria crit = createCriteria();
         crit.add(Subqueries.propertyIn("mid", subquery2));
-        return crit.list();
+        return crit;
     }
 
 }
