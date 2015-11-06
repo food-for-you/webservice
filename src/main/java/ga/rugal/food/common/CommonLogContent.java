@@ -24,5 +24,5 @@ public interface CommonLogContent
 
     final String NO_RESTAURANT = "Restaurant data is empty";
 
-    final String RESAURANT_NOT_FOUND = "There is no restaurant in the database";
+    final String RESAURANT_NOT_FOUND = "There is no restaurant in database";
 }

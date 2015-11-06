@@ -24,4 +24,7 @@ public interface TagService
 
     Tag updateByUpdater(Updater<Tag> updater);
 
+    @Transactional(readOnly = true)
+    Tag getByName(String name);
+
 }

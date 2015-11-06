@@ -3,6 +3,7 @@ package ga.rugal.food.core.service.impl;
 import ga.rugal.food.core.dao.MenuDao;
 import ga.rugal.food.core.entity.Menu;
 import ga.rugal.food.core.entity.Restaurant;
+import ga.rugal.food.core.entity.Tag;
 import ga.rugal.food.core.service.MenuService;
 import ml.rugal.sshcommon.page.Pagination;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,21 +52,38 @@ public class MenuServiceImpl implements MenuService
     {
         return menuDao.deleteById(id);
     }
-    
+
     @Override
     /**
      * {@inheritDoc}
      */
-    public int countMenusByRestaurant(Restaurant r) {
+    public int countMenusByRestaurant(Restaurant r)
+    {
         return menuDao.countMenusByRestaurant(r);
     }
-    
+
     @Override
     /**
      * {@inheritDoc}
      */
-    public Menu getRandomMenuByRetaurant(Restaurant r) {
+    public Menu getRandomMenuByRetaurant(Restaurant r)
+    {
         return menuDao.getRandomMenuByRestaurant(r);
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    @Transactional(readOnly = true)
+    public Menu getRandomMenuByTagAndRestaurant(Tag tag, Restaurant restaurant)
+    {
+        //Do input validation in this layer.
+        Menu menu = null;
+        if (null != tag && null != restaurant)
+        {
+            menu = menuDao.getRandomMenuByTagAndRestaurant(tag, restaurant);
+        }
+        return menu;
+    }
 }

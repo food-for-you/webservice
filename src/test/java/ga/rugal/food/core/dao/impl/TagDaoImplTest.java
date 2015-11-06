@@ -2,6 +2,7 @@ package ga.rugal.food.core.dao.impl;
 
 import ga.rugal.DBTestBase;
 import ga.rugal.food.core.dao.TagDao;
+import ga.rugal.food.core.entity.MealType;
 import ga.rugal.food.core.entity.Tag;
 import ml.rugal.sshcommon.page.Pagination;
 import org.junit.After;
@@ -50,7 +51,7 @@ public class TagDaoImplTest extends DBTestBase
         Pagination result = tagDao.getPage(pageNo, pageSize);
         Assert.assertEquals(1, result.getList().size());
     }
-
+    
     @Test
     public void testGetByID()
     {
@@ -59,4 +60,13 @@ public class TagDaoImplTest extends DBTestBase
         Assert.assertNotNull(tagDao.getByID(id));
     }
 
+    @Test
+    public void testGetByName()
+    {
+        System.out.println("getByName");
+        String name = MealType.breakfast.toString();
+        Tag result = tagDao.getByName(name);
+        Assert.assertNotNull(result);
+
+    }
 }

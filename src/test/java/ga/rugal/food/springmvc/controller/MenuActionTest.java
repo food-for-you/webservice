@@ -57,10 +57,10 @@ public class MenuActionTest extends ControllerClientSideTestBase
         restaurantService.deleteById(restaurant.getRid());
     }
 
-    @Test
-    public void testMenuByRestaurant() throws Exception
+//    @Test
+    public void testGetMenu() throws Exception
     {
-        System.out.println("menuByRestaurant");
+        System.out.println("getMenu");
         MvcResult result = this.mockMvc.perform(get("/menu")
             .accept(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(status().isOk())
@@ -70,8 +70,23 @@ public class MenuActionTest extends ControllerClientSideTestBase
         Menu getFromDB = menu.backToObject(message.getData());
         Assert.assertNotNull(getFromDB);
     }
-    
+
     @Test
+    public void testGetMenuByMealType() throws Exception
+    {
+        System.out.println("getMenuByMealType");
+        MvcResult result = this.mockMvc.perform(get("/menu")
+            .param("meal", "lunch")
+            .accept(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(status().isOk())
+            .andDo(print())
+            .andReturn();
+        Message message = GSON.fromJson(result.getResponse().getContentAsString(), Message.class);
+        Menu getFromDB = menu.backToObject(message.getData());
+        Assert.assertNotNull(getFromDB);
+    }
+
+//    @Test
     public void testGetImage() throws Exception
     {
         System.out.println("getImage");
@@ -83,7 +98,7 @@ public class MenuActionTest extends ControllerClientSideTestBase
             .andDo(print());
     }
 
-    @Test
+//    @Test
     public void testGetMissedImage() throws Exception
     {
         System.out.println("getMissedImage");
