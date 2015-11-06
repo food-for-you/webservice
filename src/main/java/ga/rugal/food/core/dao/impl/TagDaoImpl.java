@@ -38,6 +38,14 @@ public class TagDaoImpl extends HibernateBaseDao<Tag, Integer> implements TagDao
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public Tag getByName(String name)
+    {
+        Tag entity = super.findUniqueByProperty("name", name);
+        return entity;
+    }
+
+    @Override
     public Tag save(Tag bean)
     {
         getSession().save(bean);
