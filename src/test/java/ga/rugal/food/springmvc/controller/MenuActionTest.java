@@ -58,9 +58,9 @@ public class MenuActionTest extends ControllerClientSideTestBase
     }
 
     @Test
-    public void testMenuByRestaurant() throws Exception
+    public void testGetMenu() throws Exception
     {
-        System.out.println("menuByRestaurant");
+        System.out.println("getMenu");
         MvcResult result = this.mockMvc.perform(get("/menu")
             .accept(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(status().isOk())
@@ -70,7 +70,22 @@ public class MenuActionTest extends ControllerClientSideTestBase
         Menu getFromDB = menu.backToObject(message.getData());
         Assert.assertNotNull(getFromDB);
     }
-    
+
+    @Test
+    public void testGetMenuByMealType() throws Exception
+    {
+        System.out.println("getMenuByMealType");
+        MvcResult result = this.mockMvc.perform(get("/menu")
+            .param("meal", "lunch")
+            .accept(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(status().isOk())
+            .andDo(print())
+            .andReturn();
+        Message message = GSON.fromJson(result.getResponse().getContentAsString(), Message.class);
+        //Use this assertion because there is a empty data in unit test set up
+        Assert.assertEquals(Message.SUCCESS, message.getStatus());
+    }
+
     @Test
     public void testGetImage() throws Exception
     {

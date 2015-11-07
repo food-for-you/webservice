@@ -3,12 +3,14 @@ package ga.rugal.food.core.dao.impl;
 import ga.rugal.food.core.dao.RestaurantDao;
 import ga.rugal.food.core.entity.Restaurant;
 import java.util.List;
+import java.util.Random;
 import ml.rugal.sshcommon.hibernate.HibernateBaseDao;
 import ml.rugal.sshcommon.page.Pagination;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Projections;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +21,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 public class RestaurantDaoImpl extends HibernateBaseDao<Restaurant, Integer> implements RestaurantDao
 {
+
+    @Autowired
+    private Random random;
 
     private static final Logger LOG = LoggerFactory.getLogger(RestaurantDaoImpl.class.getName());
 
@@ -38,7 +43,7 @@ public class RestaurantDaoImpl extends HibernateBaseDao<Restaurant, Integer> imp
         Restaurant entity = get(id);
         return entity;
     }
-    
+
     @Override
     /**
      * {@inheritDoc}

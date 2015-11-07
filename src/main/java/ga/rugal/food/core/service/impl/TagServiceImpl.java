@@ -51,4 +51,10 @@ public class TagServiceImpl implements TagService
     {
         return tagDao.updateByUpdater(updater);
     }
+
+    @Transactional(readOnly = true)
+    public Tag getByName(String name)
+    {
+        return tagDao.getByName(name);
+    }
 }

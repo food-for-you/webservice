@@ -2,7 +2,7 @@ package ga.rugal.food.core.service;
 
 import ga.rugal.food.core.entity.Menu;
 import ga.rugal.food.core.entity.Restaurant;
-import java.util.List;
+import ga.rugal.food.core.entity.Tag;
 import ml.rugal.sshcommon.page.Pagination;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,21 +25,35 @@ public interface MenuService
 
     @Transactional(readOnly = true)
     Menu getByID(Integer id);
-    
+
     /**
      * Count the number of menus that belong to a specific restaurant
+     *
      * @param r
+     *
      * @return Give the number of menus
      */
     @Transactional(readOnly = true)
     int countMenusByRestaurant(Restaurant r);
-    
+
     /**
      * Get a random menu from all menus belong to a specific restaurant
+     *
      * @param r
+     *
      * @return Give a menu
      */
     @Transactional(readOnly = true)
     Menu getRandomMenuByRetaurant(Restaurant r);
 
+    /**
+     * Find a menu that match given tag and provided by restaurant.
+     *
+     * @param tag
+     * @param restaurant
+     *
+     * @return
+     */
+    @Transactional(readOnly = true)
+    Menu getRandomMenuByTagAndRestaurant(Tag tag, Restaurant restaurant);
 }

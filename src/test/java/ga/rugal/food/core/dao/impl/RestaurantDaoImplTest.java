@@ -8,6 +8,7 @@ import ml.rugal.sshcommon.page.Pagination;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -24,27 +25,32 @@ public class RestaurantDaoImplTest extends DBTestBase
     @Autowired
     private RestaurantDao restaurantDao;
 
-    public RestaurantDaoImplTest(){
-    
+    public RestaurantDaoImplTest()
+    {
+
     }
 
     @Before
-    public void setUp() {
-        
+    public void setUp()
+    {
+
         System.out.println("setUp");
         restaurantDao.save(restaurant);
     }
 
     @After
-    public void tearDown() {
-        
+    public void tearDown()
+    {
+
         System.out.println("tearDown");
         restaurantDao.deleteById(restaurant.getRid());
     }
 
     @Test
-    public void testGetPage() {
-        
+    @Ignore
+    public void testGetPage()
+    {
+
         System.out.println("getPage");
         int pageNo = 1;
         int pageSize = 1;
@@ -53,31 +59,36 @@ public class RestaurantDaoImplTest extends DBTestBase
     }
 
     @Test
-    public void testGetByID() {
-        
+    @Ignore
+    public void testGetByID()
+    {
+
         System.out.println("getByID");
         Integer id = restaurant.getRid();
         Assert.assertNotNull(restaurantDao.getByID(id));
     }
-    
+
     @Test
-    public void testGetWholeList() {
-        
+    @Ignore
+    public void testGetWholeList()
+    {
+
         System.out.println("getWholeList");
-        List <Restaurant> list = restaurantDao.getWholeList();
+        List<Restaurant> list = restaurantDao.getWholeList();
         Assert.assertNotNull(list);
         Assert.assertFalse(list.isEmpty());
-        Assert.assertTrue(list.size() > 0);       
+        Assert.assertTrue(list.size() > 0);
     }
-    
+
     @Test
-    public void testCountAll() {
+    @Ignore
+    public void testCountAll()
+    {
         System.out.println("countAll");
-        List <Restaurant> list = restaurantDao.getWholeList();
+        List<Restaurant> list = restaurantDao.getWholeList();
         int number1 = list.size();
         int number2 = restaurantDao.countTotal();
         Assert.assertTrue(number2 > 0);
-        Assert.assertTrue(number1 == number2 );
-        System.out.println("number2");
+        Assert.assertTrue(number1 == number2);
     }
 }

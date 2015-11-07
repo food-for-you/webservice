@@ -23,4 +23,15 @@ public interface TagDao
     Tag save(Tag bean);
 
     Tag updateByUpdater(Updater<Tag> updater);
+
+    /**
+     * Get a tag by its name, as tag table has unique index on name column, there will have at most
+     * 1 matched tag.
+     *
+     * @param name
+     *
+     * @return
+     */
+    @Transactional(readOnly = true)
+    Tag getByName(String name);
 }
