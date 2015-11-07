@@ -24,7 +24,7 @@ public interface RestaurantDao
     Restaurant save(Restaurant bean);
 
     /**
-     * Get all restaurants from table 
+     * Get all restaurants from table
      *
      * @return Give a list with all restaurants as elements
      */

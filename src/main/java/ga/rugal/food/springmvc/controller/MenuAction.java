@@ -146,10 +146,12 @@ public class MenuAction
         File image = new File(imageFolder, SystemDefaultProperties.DEFAULT_IMAGE);
         try
         {
+            //Avoiding invalid menu id
             if (null != menu)
             {
                 image = new File(imageFolder, menu.getImage());
             }
+            //prevent from loading non-exists image
             if (!image.exists())
             {
                 //if no image file found in path
