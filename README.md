@@ -19,7 +19,8 @@
 8. Continuous Integration: [travis](https://travis-ci.org/), [circleci](https://circleci.com/), [codeship](https://codeship.com)
 9. DB: Postgresql 9.4
 10. Code review: mandatory
-11. Issue tracker: github issue
+11. Task tracker: Redmine issue
+12. Continuous Deployment: [Heroku](https://heroku.com)
 
 
 ##Iteration I
