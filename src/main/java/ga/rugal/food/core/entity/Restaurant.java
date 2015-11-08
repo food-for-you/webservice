@@ -53,6 +53,10 @@ public class Restaurant
     @Column(length = 10)
     @Expose
     private String postalcode;
+    
+    @Size(max = 20)
+    @Column(length = 20)
+    private String image;
 
     @OneToMany(mappedBy = "restaurant")
     private List<Tagging> taggingList;
@@ -124,6 +128,17 @@ public class Restaurant
         return this;
     }
 
+    public String getImage()
+    {
+        return image;
+    }
+    
+    public Restaurant setImage(String image)
+    {
+        this.image = image;
+        return this;
+    }
+    
     public List<Tagging> getTaggingList()
     {
         return taggingList;

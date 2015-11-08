@@ -105,7 +105,8 @@ CREATE TABLE restaurant (
     name character varying(50),
     address character varying(50),
     phone character varying(20),
-    postalcode character varying(10)
+    postalcode character varying(10),
+    image character varying(20)
 );
 
 
@@ -297,10 +298,10 @@ SELECT pg_catalog.setval('menu_mid_seq', 388, true);
 -- Data for Name: restaurant; Type: TABLE DATA; Schema: food; Owner: postgres
 --
 
-COPY restaurant (rid, name, address, phone, postalcode) FROM stdin;
-1	ABC	Test	12045099864	N9C2M3
-2	BCC	Test2	12045099433	N9C2M3
-3	BDC	Test3	15195099433	N9C2M3
+COPY restaurant (rid, name, address, phone, postalcode, image) FROM stdin;
+1	Harveys	Test	12045099864	N9C2M3	harveys.png
+2	SaigonHouse	Test2	12045099433	N9C2M3	saigonhouse.png
+3	Seoul	Test3	15195099433	N9C2M3	seoul.png
 \.
 
 
