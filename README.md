@@ -33,6 +33,14 @@
 8. Travis-ci, codeship, circleci deployment: Done by Rugal
 9. Heroku continuous deployment: Done by Rugal
 10. Database updating for Inception features: Done by Rugal
-11. Database updating for elaboration I features: Being done by rugal
+
 
 ##Iteration II
+
+###Elaboration I
+1. Database updating for elaboration I features: Done by Rugal and Michelle
+2. Meal type related menu recommendation: Done by Rugal
+3. Restaurant recommendation: Being done by Michelle
+
+
+###Elaboration II
