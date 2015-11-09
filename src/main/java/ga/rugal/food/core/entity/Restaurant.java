@@ -21,7 +21,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(schema = "food", name = "restaurant")
 
-public class Restaurant
+public class Restaurant extends BaseObject<Restaurant>
 {
 
     private static final String sequence_name = "restaurant_rid_seq";
@@ -185,6 +185,12 @@ public class Restaurant
     public String toString()
     {
         return "ga.rugal.food.core.entity.Restaurant[ rid=" + rid + " ]";
+    }
+
+    @Override
+    protected Class<Restaurant> getRealClass() {
+        
+        return Restaurant.class;
     }
 
 }
