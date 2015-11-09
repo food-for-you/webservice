@@ -454,4 +454,3 @@ ALTER TABLE ONLY tagging
 --
 -- PostgreSQL database dump complete
 --
-
