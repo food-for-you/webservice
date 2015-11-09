@@ -64,7 +64,43 @@ public class RestaurantActionTest extends ControllerClientSideTestBase
             .andDo(print())
             .andReturn();
         Message message = GSON.fromJson(result.getResponse().getContentAsString(), Message.class);
-        Menu getFromDB = menu.backToObject(message.getData());
+        Restaurant getFromDB = restaurant.backToObject(message.getData());
         Assert.assertNotNull(getFromDB);
+    }
+    
+    @Test
+    public void testGetSpecificRestaurant() throws Exception {
+        System.out.println("getSpecificRestaurant");
+        MvcResult result = this.mockMvc.perform(get(String.format("/restaurant/%d", restaurant.getRid()))
+            .accept(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(status().isOk())
+            .andDo(print())
+            .andReturn();
+        Message message = GSON.fromJson(result.getResponse().getContentAsString(), Message.class);
+        Restaurant getFromDB = restaurant.backToObject(message.getData());
+        Assert.assertNotNull(getFromDB);
+    }
+    
+    @Test
+    public void testGetImage() throws Exception {
+        System.out.println("getImage");
+        this.mockMvc.perform(get(String.format("/restaurant/%d", restaurant.getRid()))
+            .accept(MediaType.IMAGE_GIF_VALUE, MediaType.IMAGE_JPEG_VALUE,
+                    MediaType.IMAGE_PNG_VALUE, MediaType.APPLICATION_JSON_VALUE
+            ))
+            .andExpect(status().isOk())
+            .andDo(print());
+    }
+    
+    @Test
+    public void testGetDefaultImage() throws Exception {
+        
+        System.out.println("getMissedImage");
+        this.mockMvc.perform(get(String.format("/restaurant/%d", 0))
+            .accept(MediaType.IMAGE_GIF_VALUE, MediaType.IMAGE_JPEG_VALUE,
+                    MediaType.IMAGE_PNG_VALUE, MediaType.APPLICATION_JSON_VALUE
+            ))
+            .andExpect(status().isOk())
+            .andDo(print());
     }
 }
