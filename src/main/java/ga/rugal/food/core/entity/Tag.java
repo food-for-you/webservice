@@ -35,6 +35,7 @@ public class Tag
 
     @Size(max = 20)
     @Column(length = 20)
+    @Expose
     private String name;
 
     @OneToMany(mappedBy = "tag")

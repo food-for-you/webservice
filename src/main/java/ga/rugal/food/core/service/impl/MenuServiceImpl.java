@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
- * @author Ying Mi
+ * @author Ying Mi, Rugal
  */
 @Service
 public class MenuServiceImpl implements MenuService

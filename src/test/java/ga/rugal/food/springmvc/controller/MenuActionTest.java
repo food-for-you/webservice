@@ -78,8 +78,8 @@ public class MenuActionTest extends ControllerClientSideTestBase
         MvcResult result = this.mockMvc.perform(get("/menu")
             .param("meal", "lunch")
             .accept(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(status().isOk())
             .andDo(print())
+            .andExpect(status().isOk())
             .andReturn();
         Message message = GSON.fromJson(result.getResponse().getContentAsString(), Message.class);
         //Use this assertion because there is a empty data in unit test set up
@@ -94,8 +94,8 @@ public class MenuActionTest extends ControllerClientSideTestBase
             .accept(MediaType.IMAGE_GIF_VALUE, MediaType.IMAGE_JPEG_VALUE,
                     MediaType.IMAGE_PNG_VALUE, MediaType.APPLICATION_JSON_VALUE
             ))
-            .andExpect(status().isOk())
-            .andDo(print());
+            .andDo(print())
+            .andExpect(status().isOk());
     }
 
     @Test
@@ -106,7 +106,7 @@ public class MenuActionTest extends ControllerClientSideTestBase
             .accept(MediaType.IMAGE_GIF_VALUE, MediaType.IMAGE_JPEG_VALUE,
                     MediaType.IMAGE_PNG_VALUE, MediaType.APPLICATION_JSON_VALUE
             ))
-            .andExpect(status().isOk())
-            .andDo(print());
+            .andDo(print())
+            .andExpect(status().isOk());
     }
 }

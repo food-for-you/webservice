@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
 /**
@@ -52,7 +53,8 @@ public class Menu extends BaseObject<Menu>
     private List<Tagging> taggingList;
 
     @Expose
-    private transient List<Tag> tags;
+    @Transient
+    private List<Tag> tags;
 
     @JoinColumn(name = "rid", referencedColumnName = "rid")
     @ManyToOne
