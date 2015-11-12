@@ -1,6 +1,7 @@
 package ga.rugal.food.core.service.impl;
 
 import ga.rugal.food.core.dao.MenuDao;
+import ga.rugal.food.core.dao.TagDao;
 import ga.rugal.food.core.entity.Menu;
 import ga.rugal.food.core.entity.Restaurant;
 import ga.rugal.food.core.entity.Tag;
@@ -17,6 +18,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class MenuServiceImpl implements MenuService
 {
+
+    @Autowired
+    private TagDao tagDao;
 
     @Autowired
     private MenuDao menuDao;
@@ -69,7 +73,12 @@ public class MenuServiceImpl implements MenuService
      */
     public Menu getRandomMenuByRetaurant(Restaurant r)
     {
-        return menuDao.getRandomMenuByRestaurant(r);
+        Menu menu = menuDao.getRandomMenuByRestaurant(r);
+        if (null != menu)
+        {
+            menu.setTags(tagDao.getTagsOfMenu(menu));
+        }
+        return menu;
     }
 
     /**
@@ -84,6 +93,10 @@ public class MenuServiceImpl implements MenuService
         if (null != tag && null != restaurant)
         {
             menu = menuDao.getRandomMenuByTagAndRestaurant(tag, restaurant);
+            if (null != menu)
+            {
+                menu.setTags(tagDao.getTagsOfMenu(menu));
+            }
         }
         return menu;
     }
