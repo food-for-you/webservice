@@ -44,7 +44,8 @@ public class MenuServiceImpl implements MenuService
     @Transactional(readOnly = true)
     public Menu getByID(Integer id)
     {
-        return menuDao.getByID(id);
+        Menu menu = menuDao.getByID(id);
+        return menu;
     }
 
     @Override

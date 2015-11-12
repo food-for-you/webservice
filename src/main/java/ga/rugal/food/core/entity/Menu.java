@@ -51,6 +51,9 @@ public class Menu extends BaseObject<Menu>
     @OneToMany(mappedBy = "menu")
     private List<Tagging> taggingList;
 
+    @Expose
+    private transient List<Tag> tags;
+
     @JoinColumn(name = "rid", referencedColumnName = "rid")
     @ManyToOne
     @Expose
@@ -118,6 +121,16 @@ public class Menu extends BaseObject<Menu>
     {
         this.taggingList = taggingList;
         return this;
+    }
+
+    public List<Tag> getTags()
+    {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags)
+    {
+        this.tags = tags;
     }
 
     public Restaurant getRestaurant()
