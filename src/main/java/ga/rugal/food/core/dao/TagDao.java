@@ -1,6 +1,8 @@
 package ga.rugal.food.core.dao;
 
+import ga.rugal.food.core.entity.Menu;
 import ga.rugal.food.core.entity.Tag;
+import java.util.List;
 import ml.rugal.sshcommon.hibernate.Updater;
 import ml.rugal.sshcommon.page.Pagination;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,4 +36,14 @@ public interface TagDao
      */
     @Transactional(readOnly = true)
     Tag getByName(String name);
+
+    /**
+     * Get menu tags list.
+     *
+     * @param menu
+     *
+     * @return A list of tag of a menu.
+     */
+    @Transactional(readOnly = true)
+    List<Tag> getTagsOfMenu(Menu menu);
 }

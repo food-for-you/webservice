@@ -250,7 +250,7 @@ COPY client (cid, name, credential, email, phone) FROM stdin;
 -- Name: client_cid_seq; Type: SEQUENCE SET; Schema: food; Owner: postgres
 --
 
-SELECT pg_catalog.setval('client_cid_seq', 253, true);
+SELECT pg_catalog.setval('client_cid_seq', 334, true);
 
 
 --
@@ -284,6 +284,14 @@ COPY menu (mid, name, price, rid, image) FROM stdin;
 58	Sushi	10	3	BnrHVS.png
 59	SweetSourChiken	10	3	S3EOSq.png
 60	ThaiNoodles	10	3	vWkJRk.png
+2	Coffee & bread	6	1	bf2.jpg
+3	Egg & salad	8	1	bf3.jpg
+4	Beef bread	10	2	bf4.jpg
+5	Cheese egg	10	2	bf5.jpg
+7	Tomato fried egg	10	3	bf7.jpg
+6	Silk	30	3	bf6.jpg
+1	Bacon fried egg	5	1	bf1.jpg
+8	Good morning	10	3	bf8.jpeg
 \.
 
 
@@ -291,7 +299,7 @@ COPY menu (mid, name, price, rid, image) FROM stdin;
 -- Name: menu_mid_seq; Type: SEQUENCE SET; Schema: food; Owner: postgres
 --
 
-SELECT pg_catalog.setval('menu_mid_seq', 388, true);
+SELECT pg_catalog.setval('menu_mid_seq', 586, true);
 
 
 --
@@ -309,7 +317,7 @@ COPY restaurant (rid, name, address, phone, postalcode, image) FROM stdin;
 -- Name: restaurant_rid_seq; Type: SEQUENCE SET; Schema: food; Owner: postgres
 --
 
-SELECT pg_catalog.setval('restaurant_rid_seq', 474, true);
+SELECT pg_catalog.setval('restaurant_rid_seq', 671, true);
 
 
 --
@@ -327,7 +335,7 @@ COPY tag (tid, name) FROM stdin;
 -- Name: tag_tid_seq; Type: SEQUENCE SET; Schema: food; Owner: postgres
 --
 
-SELECT pg_catalog.setval('tag_tid_seq', 310, true);
+SELECT pg_catalog.setval('tag_tid_seq', 472, true);
 
 
 --
@@ -335,14 +343,6 @@ SELECT pg_catalog.setval('tag_tid_seq', 310, true);
 --
 
 COPY tagging (gid, tid, mid, rid, weight, cid) FROM stdin;
-28	1	35	\N	0	\N
-29	1	36	\N	0	\N
-30	1	37	\N	0	\N
-31	1	44	\N	0	\N
-32	1	45	\N	0	\N
-33	1	51	\N	0	\N
-34	1	52	\N	0	\N
-35	1	53	\N	0	\N
 36	2	38	\N	0	\N
 37	2	39	\N	0	\N
 38	2	46	\N	0	\N
@@ -361,6 +361,22 @@ COPY tagging (gid, tid, mid, rid, weight, cid) FROM stdin;
 51	3	58	\N	0	\N
 52	3	59	\N	0	\N
 53	3	60	\N	0	\N
+1	1	1	\N	0	\N
+2	1	2	\N	0	\N
+3	1	3	\N	0	\N
+4	1	4	\N	0	\N
+5	1	5	\N	0	\N
+6	1	6	\N	0	\N
+7	1	7	\N	0	\N
+8	1	8	\N	0	\N
+28	2	35	\N	0	\N
+29	2	36	\N	0	\N
+30	2	37	\N	0	\N
+31	3	44	\N	0	\N
+32	3	45	\N	0	\N
+33	3	51	\N	0	\N
+34	3	52	\N	0	\N
+35	3	53	\N	0	\N
 \.
 
 
@@ -368,7 +384,7 @@ COPY tagging (gid, tid, mid, rid, weight, cid) FROM stdin;
 -- Name: tagging_gid_seq; Type: SEQUENCE SET; Schema: food; Owner: postgres
 --
 
-SELECT pg_catalog.setval('tagging_gid_seq', 177, true);
+SELECT pg_catalog.setval('tagging_gid_seq', 293, true);
 
 
 --
@@ -454,3 +470,4 @@ ALTER TABLE ONLY tagging
 --
 -- PostgreSQL database dump complete
 --
+

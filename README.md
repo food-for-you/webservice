@@ -42,6 +42,17 @@
 1. Database updating for elaboration I features: Done by Rugal and Michelle
 2. Meal type related menu recommendation: Done by Rugal
 3. Restaurant recommendation: Being done by Michelle
+4. Collect images for freakfast: Don by Michelle
+5. Update database script: Done by Rugal
+6. Get menu with its tags: Done by Rugal
+7. Beautify Index page: Done by Frances and Julia
+8. Merge 3 HTTP request functions into single controller: Being done by Frances and Julia
+
 
 
 ###Elaboration II
+1. Add body metrics index for each menu
+2. Add review for menus
+3. Add review for restaurants
+9. Fetch data dynamically with AngularJS `$HTTP` service
+10. Beautify index page using animation

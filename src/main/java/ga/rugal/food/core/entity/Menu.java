@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
 /**
@@ -50,6 +51,10 @@ public class Menu extends BaseObject<Menu>
 
     @OneToMany(mappedBy = "menu")
     private List<Tagging> taggingList;
+
+    @Expose
+    @Transient
+    private List<Tag> tags;
 
     @JoinColumn(name = "rid", referencedColumnName = "rid")
     @ManyToOne
@@ -118,6 +123,16 @@ public class Menu extends BaseObject<Menu>
     {
         this.taggingList = taggingList;
         return this;
+    }
+
+    public List<Tag> getTags()
+    {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags)
+    {
+        this.tags = tags;
     }
 
     public Restaurant getRestaurant()
