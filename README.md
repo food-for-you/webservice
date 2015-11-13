@@ -45,6 +45,9 @@
 4. Collect images for freakfast: Don by Michelle
 5. Update database script: Done by Rugal
 6. Get menu with its tags: Done by Rugal
+7. Beautify Index page: Done by Frances and Julia
+8. Merge 3 HTTP request functions into single controller: Being done by Frances and Julia
+9. Fetch data dynamically with AngularJS `$HTTP` service: Done by Frances and Julia
 
 
 ###Elaboration II
