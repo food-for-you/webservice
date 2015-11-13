@@ -47,10 +47,12 @@
 6. Get menu with its tags: Done by Rugal
 7. Beautify Index page: Done by Frances and Julia
 8. Merge 3 HTTP request functions into single controller: Being done by Frances and Julia
-9. Fetch data dynamically with AngularJS `$HTTP` service: Done by Frances and Julia
+
 
 
 ###Elaboration II
 1. Add body metrics index for each menu
 2. Add review for menus
 3. Add review for restaurants
+9. Fetch data dynamically with AngularJS `$HTTP` service
+10. Beautify index page using animation
