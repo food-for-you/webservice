@@ -51,3 +51,5 @@
 
 
 ###Elaboration II
+1. Add body metrics index for each menu
+2. Add review for menus and restaurants
