@@ -42,6 +42,9 @@
 1. Database updating for elaboration I features: Done by Rugal and Michelle
 2. Meal type related menu recommendation: Done by Rugal
 3. Restaurant recommendation: Being done by Michelle
+4. Collect images for freakfast: Don by Michelle
+5. Update database script: Done by Rugal
+6. Get menu with its tags: Done by Rugal
 
 
 ###Elaboration II
