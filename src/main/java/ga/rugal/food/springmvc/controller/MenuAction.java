@@ -76,6 +76,7 @@ public class MenuAction
         }
         catch (IllegalArgumentException iae)
         {
+            LOG.warn(CommonLogContent.INVALID_MEAL_TYPE, meal);
             //ignore invalid meal type
         }
         Message message;
@@ -83,17 +84,21 @@ public class MenuAction
         if (null == restaurant)
         {
             //check validity of restaurant object
+            LOG.warn(CommonLogContent.NO_RESTAURANT);
             return Message.failMessage(CommonMessageContent.MENU_NOT_FOUND);
         }
+        LOG.trace(CommonLogContent.GET_RESTAURANT, restaurant.getRid());
         if (null == tag)
         {
             //no or wrong meal type, just use old function.
+            LOG.debug(CommonLogContent.GET_FROM_ALL);
             message = fullRandomMenuRecommendation(restaurant);
         }
         else
         {
             //Now all parameters have been validated
             Menu menu = menuService.getRandomMenuByTagAndRestaurant(tag, restaurant);
+            LOG.debug(CommonLogContent.GET_MENU_BY_MEAL);
             message = Message.successMessage(CommonMessageContent.GET_MENU, menu);
         }
         return message;

@@ -24,10 +24,10 @@ public class RestaurantServiceImpl implements RestaurantService
 {
 
     private static final Logger LOG = LoggerFactory.getLogger(RestaurantServiceImpl.class.getName());
-    
+
     @Autowired
     private RestaurantDao restaurantDao;
-    
+
     @Autowired
     private Random random;
 
@@ -54,7 +54,7 @@ public class RestaurantServiceImpl implements RestaurantService
     {
         return restaurantDao.getPage(pageNo, pageSize);
     }
-    
+
     @Override
     /**
      * {@inheritDoc}
@@ -78,14 +78,23 @@ public class RestaurantServiceImpl implements RestaurantService
     }
 
     @Override
-    public Restaurant getRandomRestaurant() {
-      
+    public Restaurant getRandomRestaurant()
+    {
+
         int total = countTotal();
-        if(0 == total) {
+        if (0 == total)
+        {
             LOG.info(CommonLogContent.RESAURANT_NOT_FOUND);
-            return null;          
+            return null;
         }
-        Restaurant r = (Restaurant) getPage(random.nextInt(total), 1).getList().get(0);
+        LOG.trace(CommonLogContent.COUNT_RESTAURANT, total);
+        /*
+         * Be careful! nextInt(number) method will return a number that >=0 and <number, so the
+         * number is not reachable! In this case our random number will be 0<-->number-1
+         * But the getPage() method start from 1.
+         * That's why I add +1 in random number
+         */
+        Restaurant r = (Restaurant) getPage(random.nextInt(total) + 1, 1).getList().get(0);
         return r;
     }
 }
