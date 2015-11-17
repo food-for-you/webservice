@@ -258,14 +258,14 @@ SELECT pg_catalog.setval('client_cid_seq', 334, true);
 --
 
 COPY menu (mid, name, price, rid, image) FROM stdin;
-35	Beans	10	1	XsjNbR.png
-36	braised_pork_chops	10	1	RAW5o5.png
-37	Burger	10	1	B6LI30.png
-38	Chaomian_ChikenShrimp	10	1	ZZLuiu.png
-39	ChikenFeet	10	1	NNO7Dt.png
-40	ChikenPotato	10	1	OKKxBG.png
-41	ChikenSausage	10	1	XEN7qs.png
-42	CurryBeef	10	1	mOYbfO.png
+35	BeefBurger	10	1	Burger1.png
+36	ChikenBurger	10	1	Burger2.png
+37	BeefBurger_Combo	10	1	Burger3.png
+38	BigMac	10	1	Burger5.png
+39	BeaconBurger	10	1	Burger6.png
+40	Poutine	10	1	Burger7.png
+41	ChickenWings	10	1	Chickenwings.png
+42	CheeseBurger	10	1	Burger10.png
 43	Curry_Shrimp_Noodles	10	1	Gw35Cj.png
 44	DuckNoodles	10	2	wWbyPf.png
 45	HotFiash	10	2	m7Ox9f.png
@@ -284,14 +284,14 @@ COPY menu (mid, name, price, rid, image) FROM stdin;
 58	Sushi	10	3	BnrHVS.png
 59	SweetSourChiken	10	3	S3EOSq.png
 60	ThaiNoodles	10	3	vWkJRk.png
-2	Coffee & bread	6	1	bf2.jpg
-3	Egg & salad	8	1	bf3.jpg
+2	OnionRoll	6	1	OnionRoll9.jpg
+3	Egg & salad	8	3	bf3.jpg
 4	Beef bread	10	2	bf4.jpg
 5	Cheese egg	10	2	bf5.jpg
 7	Tomato fried egg	10	3	bf7.jpg
 6	Silk	30	3	bf6.jpg
 1	Bacon fried egg	5	1	bf1.jpg
-8	Good morning	10	3	bf8.jpeg
+8	Good morning	10	1	bf8.jpeg
 \.
 
 
@@ -307,9 +307,9 @@ SELECT pg_catalog.setval('menu_mid_seq', 586, true);
 --
 
 COPY restaurant (rid, name, address, phone, postalcode, image) FROM stdin;
-1	Harveys	Test	12045099864	N9C2M3	harveys.png
-2	SaigonHouse	Test2	12045099433	N9C2M3	saigonhouse.png
-3	Seoul	Test3	15195099433	N9C2M3	seoul.png
+1	Harveys	2380_Wyandotte_Street	12045099864	N9C2M3	harveys.png
+2	SaigonHouse	2169_Wyandotte_Street	12045099433	N9C2M3	saigonhouse.png
+3	Seoul_Resaurant	2050_Wyandotte_Street	15195099433	N9C2M3	seoul.png
 \.
 
 
