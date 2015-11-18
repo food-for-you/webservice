@@ -49,11 +49,16 @@ public class Restaurant extends BaseObject<Restaurant>
     @Expose
     private String phone;
 
+    @Size(max = 250)
+    @Column(length = 250)
+    @Expose
+    private String map;
+
     @Size(max = 10)
     @Column(length = 10)
     @Expose
     private String postalcode;
-    
+
     @Size(max = 20)
     @Column(length = 20)
     private String image;
@@ -82,6 +87,16 @@ public class Restaurant extends BaseObject<Restaurant>
     {
         this.rid = rid;
         return this;
+    }
+
+    public String getMap()
+    {
+        return map;
+    }
+
+    public void setMap(String map)
+    {
+        this.map = map;
     }
 
     public String getName()
@@ -132,13 +147,13 @@ public class Restaurant extends BaseObject<Restaurant>
     {
         return image;
     }
-    
+
     public Restaurant setImage(String image)
     {
         this.image = image;
         return this;
     }
-    
+
     public List<Tagging> getTaggingList()
     {
         return taggingList;
@@ -188,8 +203,8 @@ public class Restaurant extends BaseObject<Restaurant>
     }
 
     @Override
-    protected Class<Restaurant> getRealClass() {
-        
+    protected Class<Restaurant> getRealClass()
+    {
         return Restaurant.class;
     }
 
