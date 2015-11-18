@@ -53,7 +53,7 @@ public class Restaurant extends BaseObject<Restaurant>
     @Column(length = 10)
     @Expose
     private String postalcode;
-    
+
     @Size(max = 20)
     @Column(length = 20)
     private String image;
@@ -132,13 +132,13 @@ public class Restaurant extends BaseObject<Restaurant>
     {
         return image;
     }
-    
+
     public Restaurant setImage(String image)
     {
         this.image = image;
         return this;
     }
-    
+
     public List<Tagging> getTaggingList()
     {
         return taggingList;
@@ -188,8 +188,8 @@ public class Restaurant extends BaseObject<Restaurant>
     }
 
     @Override
-    protected Class<Restaurant> getRealClass() {
-        
+    protected Class<Restaurant> getRealClass()
+    {
         return Restaurant.class;
     }
 
