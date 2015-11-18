@@ -49,6 +49,11 @@ public class Restaurant extends BaseObject<Restaurant>
     @Expose
     private String phone;
 
+    @Size(max = 250)
+    @Column(length = 250)
+    @Expose
+    private String map;
+
     @Size(max = 10)
     @Column(length = 10)
     @Expose
@@ -82,6 +87,16 @@ public class Restaurant extends BaseObject<Restaurant>
     {
         this.rid = rid;
         return this;
+    }
+
+    public String getMap()
+    {
+        return map;
+    }
+
+    public void setMap(String map)
+    {
+        this.map = map;
     }
 
     public String getName()

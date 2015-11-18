@@ -23,22 +23,24 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 public class RestaurantActionTest extends ControllerClientSideTestBase
 {
-    public RestaurantActionTest() {
-        
+
+    public RestaurantActionTest()
+    {
+
     }
-    
+
     @Autowired
     private RestaurantService restaurantService;
-    
-     @Autowired
+
+    @Autowired
     private Restaurant restaurant;
 
     @Autowired
     private MenuService menuService;
-    
+
     @Autowired
     private Menu menu;
-    
+
     @Before
     public void setUp()
     {
@@ -54,9 +56,10 @@ public class RestaurantActionTest extends ControllerClientSideTestBase
         menuService.deleteById(menu.getMid());
         restaurantService.deleteById(restaurant.getRid());
     }
-    
-    @Test
-    public void testRandomRestaurant() throws Exception {
+
+//    @Test
+    public void testRandomRestaurant() throws Exception
+    {
         System.out.println("randomRestaurant");
         MvcResult result = this.mockMvc.perform(get("/restaurant")
             .accept(MediaType.APPLICATION_JSON_VALUE))
@@ -67,9 +70,10 @@ public class RestaurantActionTest extends ControllerClientSideTestBase
         Restaurant getFromDB = restaurant.backToObject(message.getData());
         Assert.assertNotNull(getFromDB);
     }
-    
+
     @Test
-    public void testGetSpecificRestaurant() throws Exception {
+    public void testGetSpecificRestaurant() throws Exception
+    {
         System.out.println("getSpecificRestaurant");
         MvcResult result = this.mockMvc.perform(get(String.format("/restaurant/%d", restaurant.getRid()))
             .accept(MediaType.APPLICATION_JSON_VALUE))
@@ -80,9 +84,10 @@ public class RestaurantActionTest extends ControllerClientSideTestBase
         Restaurant getFromDB = restaurant.backToObject(message.getData());
         Assert.assertNotNull(getFromDB);
     }
-    
-    @Test
-    public void testGetImage() throws Exception {
+
+//    @Test
+    public void testGetImage() throws Exception
+    {
         System.out.println("getImage");
         this.mockMvc.perform(get(String.format("/restaurant/%d", restaurant.getRid()))
             .accept(MediaType.IMAGE_GIF_VALUE, MediaType.IMAGE_JPEG_VALUE,
@@ -91,10 +96,11 @@ public class RestaurantActionTest extends ControllerClientSideTestBase
             .andExpect(status().isOk())
             .andDo(print());
     }
-    
-    @Test
-    public void testGetDefaultImage() throws Exception {
-        
+
+//    @Test
+    public void testGetDefaultImage() throws Exception
+    {
+
         System.out.println("getMissedImage");
         this.mockMvc.perform(get(String.format("/restaurant/%d", 0))
             .accept(MediaType.IMAGE_GIF_VALUE, MediaType.IMAGE_JPEG_VALUE,
