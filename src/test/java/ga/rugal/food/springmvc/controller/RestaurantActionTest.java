@@ -57,7 +57,7 @@ public class RestaurantActionTest extends ControllerClientSideTestBase
         restaurantService.deleteById(restaurant.getRid());
     }
 
-//    @Test
+    @Test
     public void testRandomRestaurant() throws Exception
     {
         System.out.println("randomRestaurant");
@@ -85,7 +85,7 @@ public class RestaurantActionTest extends ControllerClientSideTestBase
         Assert.assertNotNull(getFromDB);
     }
 
-//    @Test
+    @Test
     public void testGetImage() throws Exception
     {
         System.out.println("getImage");
@@ -97,7 +97,7 @@ public class RestaurantActionTest extends ControllerClientSideTestBase
             .andDo(print());
     }
 
-//    @Test
+    @Test
     public void testGetDefaultImage() throws Exception
     {
 
