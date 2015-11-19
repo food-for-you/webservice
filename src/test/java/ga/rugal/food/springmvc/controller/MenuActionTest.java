@@ -57,7 +57,7 @@ public class MenuActionTest extends ControllerClientSideTestBase
         restaurantService.deleteById(restaurant.getRid());
     }
 
-//    @Test
+    @Test
     public void testGetMenu() throws Exception
     {
         System.out.println("getMenu");
@@ -86,7 +86,7 @@ public class MenuActionTest extends ControllerClientSideTestBase
         Assert.assertEquals(Message.SUCCESS, message.getStatus());
     }
 
-//    @Test
+    @Test
     public void testGetImage() throws Exception
     {
         System.out.println("getImage");
@@ -98,7 +98,7 @@ public class MenuActionTest extends ControllerClientSideTestBase
             .andExpect(status().isOk());
     }
 
-//    @Test
+    @Test
     public void testGetMissedImage() throws Exception
     {
         System.out.println("getMissedImage");

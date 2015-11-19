@@ -86,7 +86,7 @@ public class TagDaoImplTest extends DBTestBase
         Menu bean = menuDao.getByID(35);
 
         List<Tag> result = tagDao.getTagsOfMenu(bean);
-        Assert.assertEquals(1, result.size());
+        Assert.assertEquals(2, result.size());
     }
 
 }
