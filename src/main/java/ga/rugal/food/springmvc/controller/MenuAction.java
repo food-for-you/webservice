@@ -65,7 +65,9 @@ public class MenuAction
      */
     @ResponseBody
     @RequestMapping(method = RequestMethod.GET)
-    public Message getMenu(@RequestParam(value = "meal", required = false, defaultValue = "") String meal)
+    public Message getMenu(@RequestParam(value = "meal",
+                                         required = false,
+                                         defaultValue = "") String meal)
     {
         Tag tag = null;
         try
@@ -177,5 +179,25 @@ public class MenuAction
         //The code below is for in browser displaying
 //        response.setHeader("Content-Disposition", String.format("inline; filename=\"%s\"", image.getName()));
         return data;
+    }
+
+    /**
+     * Get specific menu by its MID.
+     *
+     * @param mid
+     *
+     * @return get the menu by its MID if found.
+     *
+     */
+    @ResponseBody
+    @RequestMapping(value = "/{mid}")
+    public Message getSpecificMenu(@PathVariable("mid") Integer mid)
+    {
+        Menu menu = menuService.getByID(mid);
+        if (null == menu)
+        {
+            return Message.failMessage(CommonMessageContent.MENU_NOT_FOUND);
+        }
+        return Message.successMessage(CommonMessageContent.GET_MENU, menu);
     }
 }
