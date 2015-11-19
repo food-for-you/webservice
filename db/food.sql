@@ -106,7 +106,8 @@ CREATE TABLE restaurant (
     address character varying(50),
     phone character varying(20),
     postalcode character varying(10),
-    image character varying(20)
+    image character varying(20),
+    map character varying(250)
 );
 
 
@@ -250,7 +251,7 @@ COPY client (cid, name, credential, email, phone) FROM stdin;
 -- Name: client_cid_seq; Type: SEQUENCE SET; Schema: food; Owner: postgres
 --
 
-SELECT pg_catalog.setval('client_cid_seq', 334, true);
+SELECT pg_catalog.setval('client_cid_seq', 345, true);
 
 
 --
@@ -258,34 +259,34 @@ SELECT pg_catalog.setval('client_cid_seq', 334, true);
 --
 
 COPY menu (mid, name, price, rid, image) FROM stdin;
-35	BeefBurger	10	1	Burger1.png
-36	ChikenBurger	10	1	Burger2.png
-37	BeefBurger_Combo	10	1	Burger3.png
+35	Beef Burger	10	1	Burger1.png
+36	Chiken Burger	10	1	Burger2.png
+37	Beef Burger Combo	10	1	Burger3.png
 38	BigMac	10	1	Burger5.png
-39	BeaconBurger	10	1	Burger6.png
+39	Beacon Burger	10	1	Burger6.png
 40	Poutine	10	1	Burger7.png
-41	ChickenWings	10	1	Chickenwings.png
-42	CheeseBurger	10	1	Burger10.png
-43	Curry_Shrimp_Noodles	10	1	Gw35Cj.png
-44	DuckNoodles	10	2	wWbyPf.png
-45	HotFiash	10	2	m7Ox9f.png
+41	Chicken Wings	10	1	Chickenwings.png
+42	Cheese Burger	10	1	Burger10.png
+43	Curry Shrimp Noodles	10	1	Gw35Cj.png
+44	Duck Noodles	10	2	wWbyPf.png
+45	Hot Fish	10	2	m7Ox9f.png
 46	Huiguorou	10	2	sERJWG.jpeg
-47	JapaneseBeefHotpot	10	2	BibmYC.png
-48	KoreanFriedChiken	10	2	9GTO6O.png
-49	Korean_ZhaJiangMian	10	2	ZJejGo.png
-50	Mushroom_Chiken	10	2	daAd0l.png
-51	OctopusNoodles	10	3	T9bF6R.png
+47	Japanese Beef Hotpot	10	2	BibmYC.png
+48	Korean Fried Chicken	10	2	9GTO6O.png
+49	Korean ZhaJiangMian	10	2	ZJejGo.png
+50	Mushroom Chicken	10	2	daAd0l.png
+51	Octopus Noodles	10	3	T9bF6R.png
 52	Pancake	10	3	Gr17xM.png
 53	Pizza	10	3	GTfKc3.png
 54	Sandwish	10	3	T3shHI.png
 55	Sashimi	10	3	wM4WMu.png
-56	SeasonalBean	10	3	G8pJYn.png
-57	SpecyTOFU	10	3	nGeo7Y.png
+56	Seasonal Bean	10	3	G8pJYn.png
+57	Spicy Tofu	10	3	nGeo7Y.png
 58	Sushi	10	3	BnrHVS.png
-59	SweetSourChiken	10	3	S3EOSq.png
+59	Sweet Sour Chicken	10	3	S3EOSq.png
 60	ThaiNoodles	10	3	vWkJRk.png
 2	OnionRoll	6	1	OnionRoll9.jpg
-3	Egg & salad	8	3	bf3.jpg
+3	Egg & Salad	8	3	bf3.jpg
 4	Beef bread	10	2	bf4.jpg
 5	Cheese egg	10	2	bf5.jpg
 7	Tomato fried egg	10	3	bf7.jpg
@@ -299,17 +300,17 @@ COPY menu (mid, name, price, rid, image) FROM stdin;
 -- Name: menu_mid_seq; Type: SEQUENCE SET; Schema: food; Owner: postgres
 --
 
-SELECT pg_catalog.setval('menu_mid_seq', 586, true);
+SELECT pg_catalog.setval('menu_mid_seq', 606, true);
 
 
 --
 -- Data for Name: restaurant; Type: TABLE DATA; Schema: food; Owner: postgres
 --
 
-COPY restaurant (rid, name, address, phone, postalcode, image) FROM stdin;
-1	Harveys	2380_Wyandotte_Street	12045099864	N9C2M3	harveys.png
-2	SaigonHouse	2169_Wyandotte_Street	12045099433	N9C2M3	saigonhouse.png
-3	Seoul_Resaurant	2050_Wyandotte_Street	15195099433	N9C2M3	seoul.png
+COPY restaurant (rid, name, address, phone, postalcode, image, map) FROM stdin;
+2	Saigon House	2169 Wyandotte Street	12045099433	N9C2M3	saigonhouse.png	pb=!1m14!1m8!1m3!1d11803.394522061195!2d-83.0575257!3d42.3030952!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x3b767e178426319d!2sSaigon+House!5e0!3m2!1sen!2sca!4v1447948009325
+1	Harveys	2380 Wyandotte Street	12045099864	N9C2M3	harveys.png	pb=!1m14!1m8!1m3!1d4821.412700524464!2d-83.06213734380451!3d42.30341483089521!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0xa27a2b8d02399e8e!2sHarvey&#39;s!5e0!3m2!1sen!2sca!4v1447948071327
+3	Windsor Seoul	2050 Wyandotte Street	15195099433	N9C2M3	seoul.png	pb=!1m14!1m8!1m3!1d5733.606451875987!2d-83.0625314200288!3d42.303984023907155!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0xfc7b03ed50bb8da2!2sWindsor+Seoul!5e0!3m2!1sen!2sca!4v1447948113853
 \.
 
 
@@ -317,7 +318,7 @@ COPY restaurant (rid, name, address, phone, postalcode, image) FROM stdin;
 -- Name: restaurant_rid_seq; Type: SEQUENCE SET; Schema: food; Owner: postgres
 --
 
-SELECT pg_catalog.setval('restaurant_rid_seq', 671, true);
+SELECT pg_catalog.setval('restaurant_rid_seq', 691, true);
 
 
 --
@@ -335,7 +336,7 @@ COPY tag (tid, name) FROM stdin;
 -- Name: tag_tid_seq; Type: SEQUENCE SET; Schema: food; Owner: postgres
 --
 
-SELECT pg_catalog.setval('tag_tid_seq', 472, true);
+SELECT pg_catalog.setval('tag_tid_seq', 493, true);
 
 
 --
@@ -384,7 +385,7 @@ COPY tagging (gid, tid, mid, rid, weight, cid) FROM stdin;
 -- Name: tagging_gid_seq; Type: SEQUENCE SET; Schema: food; Owner: postgres
 --
 
-SELECT pg_catalog.setval('tagging_gid_seq', 293, true);
+SELECT pg_catalog.setval('tagging_gid_seq', 309, true);
 
 
 --
