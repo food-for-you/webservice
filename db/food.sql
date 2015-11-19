@@ -260,7 +260,7 @@ SELECT pg_catalog.setval('client_cid_seq', 345, true);
 
 COPY menu (mid, name, price, rid, image) FROM stdin;
 35	Beef Burger	10	1	Burger1.png
-36	Chiken Burger	10	1	Burger2.png
+36	Chicken Burger	10	1	Burger2.png
 37	Beef Burger Combo	10	1	Burger3.png
 38	BigMac	10	1	Burger5.png
 39	Beacon Burger	10	1	Burger6.png
@@ -329,6 +329,8 @@ COPY tag (tid, name) FROM stdin;
 1	breakfast
 2	lunch
 3	dinner
+4	Spicy
+5	Juicy
 \.
 
 
@@ -344,6 +346,12 @@ SELECT pg_catalog.setval('tag_tid_seq', 493, true);
 --
 
 COPY tagging (gid, tid, mid, rid, weight, cid) FROM stdin;
+13	4	45	\N	0	\N
+14	4	47	\N	0	\N
+9	5	35	\N	0	\N
+10	5	36	\N	0	\N
+11	5	37	\N	0	\N
+12	5	38	\N	0	\N
 36	2	38	\N	0	\N
 37	2	39	\N	0	\N
 38	2	46	\N	0	\N
