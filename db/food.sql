@@ -251,7 +251,7 @@ COPY client (cid, name, credential, email, phone) FROM stdin;
 -- Name: client_cid_seq; Type: SEQUENCE SET; Schema: food; Owner: postgres
 --
 
-SELECT pg_catalog.setval('client_cid_seq', 334, true);
+SELECT pg_catalog.setval('client_cid_seq', 345, true);
 
 
 --
@@ -260,7 +260,7 @@ SELECT pg_catalog.setval('client_cid_seq', 334, true);
 
 COPY menu (mid, name, price, rid, image) FROM stdin;
 35	Beef Burger	10	1	Burger1.png
-36	Chiken Burger	10	1	Burger2.png
+36	Chicken Burger	10	1	Burger2.png
 37	Beef Burger Combo	10	1	Burger3.png
 38	BigMac	10	1	Burger5.png
 39	Beacon Burger	10	1	Burger6.png
@@ -300,7 +300,7 @@ COPY menu (mid, name, price, rid, image) FROM stdin;
 -- Name: menu_mid_seq; Type: SEQUENCE SET; Schema: food; Owner: postgres
 --
 
-SELECT pg_catalog.setval('menu_mid_seq', 586, true);
+SELECT pg_catalog.setval('menu_mid_seq', 606, true);
 
 
 --
@@ -308,9 +308,9 @@ SELECT pg_catalog.setval('menu_mid_seq', 586, true);
 --
 
 COPY restaurant (rid, name, address, phone, postalcode, image, map) FROM stdin;
-1	Harveys	2380_Wyandotte_Street	12045099864	N9C2M3	harveys.png	pb=!1m18!1m12!1m3!1d1470.1113374091908!2d-83.06208798581319!3d42.30555677575661!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0xa27a2b8d02399e8e!2sHarvey&#39;s!5e1!3m2!1sen!2sca!4v1447823450395
-2	Saigon House	2169_Wyandotte_Street	12045099433	N9C2M3	saigonhouse.png	pb=!1m18!1m12!1m3!1d436.2334097003482!2d-83.06076432865417!3d42.305563645926426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x883b2d74674f098d%3A0x3b767e178426319d!2sSaigon+House!5e1!3m2!1sen!2sca!4v1447823752353
-3	Windsor Seoul	2050_Wyandotte_Street	15195099433	N9C2M3	seoul.png	pb=!1m18!1m12!1m3!1d367.086512825742!2d-83.05945577654617!3d42.30614143540704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x883b2d749af37291%3A0xfc7b03ed50bb8da2!2sWindsor+Seoul!5e1!3m2!1sen!2sca!4v1447823707033
+2	Saigon House	2169 Wyandotte Street	12045099433	N9C2M3	saigonhouse.png	pb=!1m14!1m8!1m3!1d11803.394522061195!2d-83.0575257!3d42.3030952!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x3b767e178426319d!2sSaigon+House!5e0!3m2!1sen!2sca!4v1447948009325
+1	Harveys	2380 Wyandotte Street	12045099864	N9C2M3	harveys.png	pb=!1m14!1m8!1m3!1d4821.412700524464!2d-83.06213734380451!3d42.30341483089521!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0xa27a2b8d02399e8e!2sHarvey&#39;s!5e0!3m2!1sen!2sca!4v1447948071327
+3	Windsor Seoul	2050 Wyandotte Street	15195099433	N9C2M3	seoul.png	pb=!1m14!1m8!1m3!1d5733.606451875987!2d-83.0625314200288!3d42.303984023907155!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0xfc7b03ed50bb8da2!2sWindsor+Seoul!5e0!3m2!1sen!2sca!4v1447948113853
 \.
 
 
@@ -318,7 +318,7 @@ COPY restaurant (rid, name, address, phone, postalcode, image, map) FROM stdin;
 -- Name: restaurant_rid_seq; Type: SEQUENCE SET; Schema: food; Owner: postgres
 --
 
-SELECT pg_catalog.setval('restaurant_rid_seq', 671, true);
+SELECT pg_catalog.setval('restaurant_rid_seq', 691, true);
 
 
 --
@@ -329,6 +329,8 @@ COPY tag (tid, name) FROM stdin;
 1	breakfast
 2	lunch
 3	dinner
+4	Spicy
+5	Juicy
 \.
 
 
@@ -336,7 +338,7 @@ COPY tag (tid, name) FROM stdin;
 -- Name: tag_tid_seq; Type: SEQUENCE SET; Schema: food; Owner: postgres
 --
 
-SELECT pg_catalog.setval('tag_tid_seq', 472, true);
+SELECT pg_catalog.setval('tag_tid_seq', 493, true);
 
 
 --
@@ -344,6 +346,12 @@ SELECT pg_catalog.setval('tag_tid_seq', 472, true);
 --
 
 COPY tagging (gid, tid, mid, rid, weight, cid) FROM stdin;
+13	4	45	\N	0	\N
+14	4	47	\N	0	\N
+9	5	35	\N	0	\N
+10	5	36	\N	0	\N
+11	5	37	\N	0	\N
+12	5	38	\N	0	\N
 36	2	38	\N	0	\N
 37	2	39	\N	0	\N
 38	2	46	\N	0	\N
@@ -385,7 +393,7 @@ COPY tagging (gid, tid, mid, rid, weight, cid) FROM stdin;
 -- Name: tagging_gid_seq; Type: SEQUENCE SET; Schema: food; Owner: postgres
 --
 
-SELECT pg_catalog.setval('tagging_gid_seq', 293, true);
+SELECT pg_catalog.setval('tagging_gid_seq', 309, true);
 
 
 --

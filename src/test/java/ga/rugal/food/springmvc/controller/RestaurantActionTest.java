@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 /**
  *
- * @author Ying Mi
+ * @author Ying Mi, Rugal Bernstein
  */
 public class RestaurantActionTest extends ControllerClientSideTestBase
 {
@@ -100,7 +100,6 @@ public class RestaurantActionTest extends ControllerClientSideTestBase
     @Test
     public void testGetDefaultImage() throws Exception
     {
-
         System.out.println("getMissedImage");
         this.mockMvc.perform(get(String.format("/restaurant/%d", 0))
             .accept(MediaType.IMAGE_GIF_VALUE, MediaType.IMAGE_JPEG_VALUE,
