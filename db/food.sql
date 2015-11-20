@@ -259,14 +259,14 @@ SELECT pg_catalog.setval('client_cid_seq', 345, true);
 --
 
 COPY menu (mid, name, price, rid, image) FROM stdin;
-35	Beef Burger	10	1	Burger1.png
-36	Chicken Burger	10	1	Burger2.png
-37	Beef Burger Combo	10	1	Burger3.png
-38	BigMac	10	1	Burger5.png
-39	Beacon Burger	10	1	Burger6.png
-40	Poutine	10	1	Burger7.png
-41	Chicken Wings	10	1	Chickenwings.png
-42	Cheese Burger	10	1	Burger10.png
+35	Beef Burger	10	1	Burger1.jpg
+36	Chicken Burger	10	1	Burger2.jpg
+37	Beef Burger Combo	10	1	Burger3.jpeg
+38	BigMac	10	1	Burger5.jpg
+39	Beacon Burger	10	1	Burger6.jpg
+40	Poutine	10	1	Burger7.jpg
+41	Chicken Wings	10	1	Chickenwings.jpg
+42	Cheese Burger	10	1	Burger10.jpg
 43	Curry Shrimp Noodles	10	1	Gw35Cj.png
 44	Duck Noodles	10	2	wWbyPf.png
 45	Hot Fish	10	2	m7Ox9f.png
@@ -285,7 +285,7 @@ COPY menu (mid, name, price, rid, image) FROM stdin;
 58	Sushi	10	3	BnrHVS.png
 59	Sweet Sour Chicken	10	3	S3EOSq.png
 60	ThaiNoodles	10	3	vWkJRk.png
-2	OnionRoll	6	1	OnionRoll9.jpg
+2	Onion Ring	6	1	OnionRoll9.jpg
 3	Egg & Salad	8	3	bf3.jpg
 4	Beef bread	10	2	bf4.jpg
 5	Cheese egg	10	2	bf5.jpg
